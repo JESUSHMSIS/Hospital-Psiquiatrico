@@ -1,0 +1,5 @@
+Esto para inicar sesion de los diferentes usuarios
+
+Login para el admin : admin/admin123
+Login para el paciente: alejandra@gmail.com/alejandra123
+Login para el especialista: jesus@gmail.com/jesus123
