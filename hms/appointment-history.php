@@ -100,7 +100,7 @@ while($row=mysqli_fetch_array($sql))
 												<td>
 <?php if(($row['userStatus']==1) && ($row['doctorStatus']==1))  
 {
-	echo "Active";
+	echo "Activa";
 }
 if(($row['userStatus']==0) && ($row['doctorStatus']==1))  
 {

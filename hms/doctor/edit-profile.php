@@ -81,7 +81,7 @@ echo "<script>alert('Datos de especialista actualizado correctamente!!');</scrip
 while($data=mysqli_fetch_array($sql))
 {
 ?>
-<h4><?php echo htmlentities($data['doctorName']);?>'s Perfil</h4>
+<h4><?php echo htmlentities($data['doctorName']);?> Perfil</h4>
 <p><b>Perfil Reg. Fecha: </b><?php echo htmlentities($data['creationDate']);?></p>
 <?php if($data['updationDate']){?>
 <p><b>Fecha de última actualización del perfil: </b><?php echo htmlentities($data['updationDate']);?></p>

@@ -16,7 +16,7 @@ $docemail=$_POST['docemail'];
 $sql=mysqli_query($con,"Update doctors set specilization='$docspecialization',doctorName='$docname',address='$docaddress',docFees='$docfees',contactno='$doccontactno',docEmail='$docemail' where id='$did'");
 if($sql)
 {
-$msg="Doctor Details updated Successfully";
+$msg="Datos del médico actualizados con éxito";
 
 }
 }
@@ -89,15 +89,15 @@ while($data=mysqli_fetch_array($sql))
 {
 ?>
 <h4><?php echo htmlentities($data['doctorName']);?>'s Profile</h4>
-<p><b>Profile Reg. Date: </b><?php echo htmlentities($data['creationDate']);?></p>
+<p><b>Perfil Reg Fecha: </b><?php echo htmlentities($data['creationDate']);?></p>
 <?php if($data['updationDate']){?>
-<p><b>Profile Last Updation Date: </b><?php echo htmlentities($data['updationDate']);?></p>
+<p><b>Fecha de última actualización del perfil: </b><?php echo htmlentities($data['updationDate']);?></p>
 <?php } ?>
 <hr />
 													<form role="form" name="adddoc" method="post" onSubmit="return valid();">
 														<div class="form-group">
 															<label for="DoctorSpecialization">
-																Doctor Specialization
+																Especialidad
 															</label>
 							<select name="Doctorspecialization" class="form-control" required="required">
 					<option value="<?php echo htmlentities($data['specilization']);?>">
@@ -116,7 +116,7 @@ while($row=mysqli_fetch_array($ret))
 
 <div class="form-group">
 															<label for="doctorname">
-																 Doctor Name
+																 Nombre de especialista
 															</label>
 	<input type="text" name="docname" class="form-control" value="<?php echo htmlentities($data['doctorName']);?>" >
 														</div>
@@ -124,27 +124,27 @@ while($row=mysqli_fetch_array($ret))
 
 <div class="form-group">
 															<label for="address">
-																 Doctor Clinic Address
+																 Direccion de hospital
 															</label>
 					<textarea name="clinicaddress" class="form-control"><?php echo htmlentities($data['address']);?></textarea>
 														</div>
 <div class="form-group">
 															<label for="fess">
-																 Doctor Consultancy Fees
+																 Costo de la consulta
 															</label>
 		<input type="text" name="docfees" class="form-control" required="required"  value="<?php echo htmlentities($data['docFees']);?>" >
 														</div>
 	
 <div class="form-group">
 									<label for="fess">
-																 Doctor Contact no
+																Nro de contacto
 															</label>
 					<input type="text" name="doccontact" class="form-control" required="required"  value="<?php echo htmlentities($data['contactno']);?>">
 														</div>
 
 <div class="form-group">
 									<label for="fess">
-																 Doctor Email
+																 Email especialista
 															</label>
 					<input type="email" name="docemail" class="form-control"  readonly="readonly"  value="<?php echo htmlentities($data['docEmail']);?>">
 														</div>
@@ -156,7 +156,7 @@ while($row=mysqli_fetch_array($ret))
 														
 														
 														<button type="submit" name="submit" class="btn btn-o btn-primary">
-															Update
+															Actualizar
 														</button>
 													</form>
 												</div>

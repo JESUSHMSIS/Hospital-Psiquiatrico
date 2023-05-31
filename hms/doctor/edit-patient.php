@@ -7,7 +7,7 @@ check_login();
 
 if(isset($_POST['submit']))
 {	
-	$eid=$_GET['editid'];
+	$eid=$_GET['editialertd'];
 	$patname=$_POST['patname'];
 $patcontact=$_POST['patcontact'];
 $patemail=$_POST['patemail'];

@@ -26,7 +26,7 @@ $_SESSION['dlogin']=$_POST['username'];
 $uip=$_SERVER['REMOTE_ADDR'];
 $status=0;
 mysqli_query($con,"insert into doctorslog(username,userip,status) values('".$_SESSION['dlogin']."','$uip','$status')");
-$_SESSION['errmsg']="Invalid username or password";
+$_SESSION['errmsg']="usuario o contraseña inválida";
 $extra="index.php";
 $uri  = rtrim(dirname($_SERVER['PHP_SELF']),'/\\');
 header("location:http://$host$uri/$extra");

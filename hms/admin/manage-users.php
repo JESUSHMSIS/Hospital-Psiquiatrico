@@ -57,8 +57,7 @@ if(isset($_GET['del']))
 								</ol>
 							</div>
 						</section>
-						<!-- end: PAGE TITLE -->
-						<!-- start: BASIC EXAMPLE -->
+						
 						<div class="container-fluid container-fullw bg-white">
 						
 
@@ -105,7 +104,7 @@ while($row=mysqli_fetch_array($sql))
 												<div class="visible-md visible-lg hidden-sm hidden-xs">
 							
 													
-	<a href="manage-users.php?id=<?php echo $row['id']?>&del=delete" onClick="return confirm('Are you sure you want to delete?')"class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove"><i class="fa fa-times fa fa-white"></i></a>
+	<a href="manage-users.php?id=<?php echo $row['id']?>&del=delete" onClick="return confirm('¿Estás seguro de que quieres eliminar?')"class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove"><i class="fa fa-times fa fa-white"></i></a>
 												</div>
 												<div class="visible-xs visible-sm hidden-md hidden-lg">
 													<div class="btn-group" dropdown is-open="status.isopen">
@@ -145,8 +144,7 @@ $cnt=$cnt+1;
 								</div>
 							</div>
 						</div>
-						<!-- end: BASIC EXAMPLE -->
-						<!-- end: SELECT BOXES -->
+				
 						
 					</div>
 				</div>

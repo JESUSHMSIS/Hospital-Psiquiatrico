@@ -59,7 +59,7 @@ check_login();
 Buscar por nombre o numero de contacto
 </label>
 <input type="text" name="searchdata" id="searchdata" class="form-control" value="" required='true'>
-</div>
+</div>echo
 
 <button type="submit" name="search" id="submit" class="btn btn-o btn-primary">
 Buscar
