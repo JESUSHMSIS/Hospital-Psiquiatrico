@@ -78,7 +78,7 @@ if(isset($_POST['submit']))
 <h5 class="over-title margin-bottom-15">Detalles de <span class="text-bold">Pacinte</span></h5>
 <?php
                                $vid=$_GET['viewid'];
-                               $ret=mysqli_query($con,"select * from tblpatient where ID='$vid'");
+                  echo             $ret=mysqli_query($con,"select * from tblpatient where ID='$vid'");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
                                ?>

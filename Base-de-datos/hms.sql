@@ -207,11 +207,13 @@ CREATE TABLE intentos_usuarios (
     PRIMARY KEY (id)
 );
 
-SELECT * FROM intentos_usuarios;
+
+CREATE TABLE attempts_user (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    id_user INT UNSIGNED NOT NULL,
+    attempt VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
 
 
-USE hms;
-
-SELECT * FROM doctors;
-
-
+/*la parte de el encargado de las simulaciones ver las simulaciones editar simulaciones y eliminarlas*/
