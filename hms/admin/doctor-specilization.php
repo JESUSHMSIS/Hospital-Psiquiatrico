@@ -7,7 +7,7 @@ check_login();
 if(isset($_POST['submit']))
 {
 $sql=mysqli_query($con,"insert into doctorSpecilization(specilization) values('".$_POST['doctorspecilization']."')");
-$_SESSION['msg']="Doctor Specialization added successfully !!";
+$_SESSION['msg']="Especialidad agregada correctamente !!";
 }
 
 if(isset($_GET['del']))

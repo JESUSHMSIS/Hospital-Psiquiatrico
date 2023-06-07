@@ -6,7 +6,7 @@ include('include/checklogin.php');
 check_login();
 
 if(isset($_POST['submit']))
-{	$docspecialization=$_PechoOST['Doctorspecialization'];
+{	$docspecialization=$_POST['Doctorspecialization'];
 $docname=$_POST['docname'];
 $docaddress=$_POST['clinicaddress'];
 $docfees=$_POST['docfees'];
@@ -113,11 +113,11 @@ error:function (){}
 									
 													<form role="form" name="adddoc" method="post" onSubmit="return valid();">
 														<div class="form-group">
-															<label for="DoctorSpecialization">
+															<label for="Doctorspecialization">
 																Especialidad
 															</label>
 							<select name="Doctorspecialization" class="form-control" required="true">
-																<option value="">Selecciona Especialidadn</option>
+																<option value="">Selecciona Especialidad</option>
 <?php $ret=mysqli_query($con,"select * from doctorspecilization");
 while($row=mysqli_fetch_array($ret))
 {

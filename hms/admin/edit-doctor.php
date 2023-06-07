@@ -7,7 +7,7 @@ check_login();
 $did=intval($_GET['id']);// get doctor id
 if(isset($_POST['submit']))
 {
-	$docspecialization=$_POST['Doctorspecialization'];
+$docspecialization=$_POST['Doctorspecialization'];
 $docname=$_POST['docname'];
 $docaddress=$_POST['clinicaddress'];
 $docfees=$_POST['docfees'];

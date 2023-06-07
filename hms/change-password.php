@@ -13,7 +13,7 @@ $num=mysqli_fetch_array($sql);
 if($num>0)
 {
  $con=mysqli_query($con,"update users set password='".md5($_POST['npass'])."', updationDate='$currentTime' where id='".$_SESSION['id']."'");
-$_SESSION['msg1']="Contraseña cambiada correctamente!!";
+$_SESSION['msg1']="Contraseña actualizada correctamente!!";
 }
 else
 {
@@ -111,7 +111,7 @@ return true;
 													<h5 class="panel-title">Cambiar contraseña</h5>
 												</div>
 												<div class="panel-body">
-								<p style="color:red;"><?php echo htmlentities($_SESSION['msg1']);?>
+								<p style="color:green;"><?php echo htmlentities($_SESSION['msg1']);?>
 								<?php echo htmlentities($_SESSION['msg1']="");?></p>	
 													<form role="form" name="chngpwd" method="post" onSubmit="return valid();">
 														<div class="form-group">
@@ -150,14 +150,6 @@ return true;
 								</div>
 							</div>
 						
-						<!-- end: BASIC EXAMPLE -->
-			
-					
-					
-						
-						
-					
-						<!-- end: SELECT BOXES -->
 						
 					</div>
 				</div>

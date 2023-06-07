@@ -111,7 +111,7 @@ return true;
 													<h5 class="panel-title">Cambiar contraseña</h5>
 												</div>
 												<div class="panel-body">
-								<p style="color:red;"><?php echo htmlentities($_SESSION['msg1']);?>
+								<p style="color:green;"><?php echo htmlentities($_SESSION['msg1']);?>
 								<?php echo htmlentities($_SESSION['msg1']="");?></p>	
 													<form role="form" name="chngpwd" method="post" onSubmit="return valid();">
 														<div class="form-group">

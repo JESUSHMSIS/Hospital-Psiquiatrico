@@ -215,5 +215,24 @@ CREATE TABLE attempts_user (
     PRIMARY KEY (id)
 );
 
+DROP TABLE simulador;
+CREATE TABLE `simulador` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `doctorId` int(11) DEFAULT NULL,
+  `nombre` varchar(255) DEFAULT NULL,
+  `enlace` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+ALTER TABLE `simulador` ADD COLUMN `youtube_link` varchar(255) DEFAULT NULL;
+
+
+
+INSERT INTO `simulador` (`doctorId`, `nombre`, `enlace`, `username`, `password`) VALUES
+(1, 'Video 1', 'enlace_video_1', 'usuario1', 'contraseña1');
 
 /*la parte de el encargado de las simulaciones ver las simulaciones editar simulaciones y eliminarlas*/
+
+SELECT * FROM simulador;
