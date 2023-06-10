@@ -1,6 +1,8 @@
 <?php
 session_start();
 // Verificar si el usuario ha iniciado sesión
+
+
 // Establecer la conexión con la base de datos
 $dbHost = 'localhost';
 $dbUser = 'root';
@@ -30,13 +32,14 @@ if (isset($_GET['delete'])) {
 
 // Procesar la subida del video si se envió el formulario
 if (isset($_POST['submit'])) {
-    // Obtener el enlace del video enviado en el formulario
+    // Obtener el enlace y el nombre del video enviado en el formulario
     $videoLink = $_POST['video_link'];
+    $videoName = $_POST['video_name'];
 
-    // Verificar si se proporcionó un enlace de video válido
-    if (!empty($videoLink) && isValidYouTubeUrl($videoLink)) {
-        // Insertar el enlace del video en la base de datos
-        $query = "INSERT INTO simulador (youtube_link) VALUES ('$videoLink')";
+    // Verificar si se proporcionó un enlace y un nombre de video válidos
+    if (!empty($videoLink) && !empty($videoName) && isValidYouTubeUrl($videoLink)) {
+        // Insertar el enlace y el nombre del video en la base de datos
+        $query = "INSERT INTO simulador (youtube_link, nombre) VALUES ('$videoLink', '$videoName')";
         $result = mysqli_query($conn, $query);
 
         if ($result) {
@@ -45,18 +48,21 @@ if (isset($_POST['submit'])) {
             $error = "Hubo un error al subir el video. Por favor, inténtalo de nuevo.";
         }
     } else {
-        $error = "Debes proporcionar un enlace válido de video de YouTube.";
+        $error = "Debes proporcionar un enlace válido de video de YouTube y un nombre para el video.";
     }
 }
 
 // Obtener todos los videos almacenados en la base de datos
-$query = "SELECT youtube_link FROM simulador";
+$query = "SELECT youtube_link, nombre FROM simulador";
 $result = mysqli_query($conn, $query);
 
-// Almacenar los enlaces en un array
+// Almacenar los enlaces y los nombres en un array
 $videos = [];
 while ($row = mysqli_fetch_assoc($result)) {
-    $videos[] = $row['youtube_link'];
+    $videos[] = [
+        'youtube_link' => $row['youtube_link'],
+        'video_name' => $row['nombre']
+    ];
 }
 
 /**
@@ -99,6 +105,7 @@ function isValidYouTubeUrl($url) {
     <!-- Formulario para subir videos -->
     <form action="" method="post">
         <h2>Subir un video</h2>
+        <input type="text" name="video_name" placeholder="Nombre del video" required>
         <input type="text" name="video_link" placeholder="Enlace del video de YouTube" required>
         <input type="submit" name="submit" value="Subir video">
     </form>
@@ -106,10 +113,11 @@ function isValidYouTubeUrl($url) {
     <!-- Mostrar los videos almacenados -->
     <h2>Videos subidos:</h2>
     <?php if (!empty($videos)) : ?>
-        <?php foreach ($videos as $videoLink) : ?>
+        <?php foreach ($videos as $video) : ?>
             <div class="youtube-video">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo getYouTubeVideoId($videoLink); ?>" frameborder="0" allowfullscreen></iframe>
-                <a href="?delete=<?php echo urlencode($videoLink); ?>">Eliminar</a>
+                <h3><?php echo $video['video_name']; ?></h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo getYouTubeVideoId($video['youtube_link']); ?>" frameborder="0" allowfullscreen></iframe>
+                <a href="?delete=<?php echo urlencode($video['youtube_link']); ?>">Eliminar</a>
             </div>
         <?php endforeach; ?>
     <?php else : ?>

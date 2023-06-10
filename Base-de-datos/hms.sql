@@ -229,9 +229,9 @@ CREATE TABLE `simulador` (
 ALTER TABLE `simulador` ADD COLUMN `youtube_link` varchar(255) DEFAULT NULL;
 
 
-
+DELETE from simulador WHERE doctorId=1;
 INSERT INTO `simulador` (`doctorId`, `nombre`, `enlace`, `username`, `password`) VALUES
-(1, 'Video 1', 'enlace_video_1', 'usuario1', 'contraseña1');
+(1, 'simulacion fobia', 'enlace_vihttps://www.youtube.com/watch?v=joXkoT6KV54deo_1', 'simulador', '123456');
 
 /*la parte de el encargado de las simulaciones ver las simulaciones editar simulaciones y eliminarlas*/
 

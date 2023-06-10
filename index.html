@@ -218,21 +218,19 @@ header .logo
 		  <h2 class="logo" id='#logo'>Hospital Psiquiatrico</h2>
 		  <div class="toggle"></div>
 		</header>
-		<video src="#" muted loop autoplay></video>
 		<div class="overlay"></div>
 		<div class="text">
       <h2>Hospital psiquiatrico de la caja nacional de salud</h2> 
       <h3>"Jose maria alvarado daza"</h3>
-		  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo exercitationem nemo totam saepe provident veniam impedit, et ipsam sint ut voluptas. Quam labore cupiditate eum consequuntur unde eaque a consequatur..</p>
-		  <a href="#">Inicia sesion</a>
+		  <p>Actualmente el Hospital Psiquiátrico de la Caja Nacional de Salud, "José María Alvarado Daza" ofrece servicios de diagnóstico, tratamiento y rehabilitación para pacientes con trastornos mentales, este lleva a cabo la evaluación, terapia o tratamiento y el registro del progreso del paciente diagnosticado con trastornos de ansiedad fóbica social. Ubicado en Calle Rosendo Villa Lobos, #1427, de la ciudad de La Paz Bolivia, fue fundado en 1961 como resultado de un proyecto iniciado por la Sociedad Boliviana de Neurología, Psiquiatría y Neurocirugía en 1959.</p>
+		  <a class="apertura">Inicia sesion</a>
 		</div>
     
 	  </section>
 	  <div class="menu">
 		<ul>
 
-		  <li><a href="index.html">Pagina principal</a></li>	
-		  <li><a href="./contact.php">Contactenos</a></li>
+		  <li><a href="./contact.php">Atencion Cliente</a></li>
       <li><a href="./hms/admin/">Administrador</a></li>	
 		  <li><a href="./hms/doctor/">Especialista</a></li>
       <li><a href="./hms/user-login.php">Paciente</a></li>	
@@ -261,10 +259,15 @@ header .logo
 	  <script>
 		 const menuToggle = document.querySelector('.toggle');
       const showcase = document.querySelector('.showcase');
+      const apertura = document.querySelector('.apertura');
 
       menuToggle.addEventListener('click', () => {
         menuToggle.classList.toggle('active');
         showcase.classList.toggle('active');
+      })
+      apertura.addEventListener('click',()=>{
+        apertura.classList.toggle('active');
+        showcase.classList.toggle('active')
       })
 	  </script>
 </body>
