@@ -74,6 +74,11 @@
 											<span class="title"> Lista de Usuarios </span>
 										</a>
 									</li>
+									<li>
+										<a href="users-des.php">
+											<span class="title">Usuarios Desactivados</span>
+										</a>
+									</li>
 									
 								</ul>
 								</li>
@@ -93,6 +98,44 @@
 									<li>
 										<a href="manage-patient.php">
 											<span class="title"> Lista de pacientes </span>
+										</a>
+									</li>
+									<li>
+										<a href="add-patient.php">
+											<span class="title"> Añadir Pacientes </span>
+										</a>
+									</li>
+									
+								</ul>
+								</li>
+								
+								<li>
+								<a href="javascript:void(0)">
+									<div class="item-content">
+										<div class="item-media">
+											<i class="ti-user"></i>
+										</div>
+										<div class="item-inner">
+											<span class="title"> Simuladores </span><i class="icon-arrow"></i>
+										</div>
+									</div>
+								</a>
+								<ul class="sub-menu">
+									
+									<li>
+										<a href="add-simulator.php">
+											<span class="title"> Añadir simulador </span>
+										</a>
+									</li>
+									
+									<li>
+										<a href="manage-simulators.php">
+											<span class="title"> Lista de simuladores </span>
+										</a>
+									</li>
+									<li>
+										<a href="simulator-des.php">
+											<span class="title">Simuladores desactivados</span>
 										</a>
 									</li>
 									

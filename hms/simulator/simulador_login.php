@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
     $password = $_POST['password'];
     
     // Consulta SQL para verificar las credenciales del usuario
-    $sql = "SELECT * FROM usuarios_simulador WHERE email = '$username' AND password = '$password'";
+    $sql = "SELECT * FROM usuarios_simulador WHERE email = '$username' AND password = '$password' AND estado = 1";
     $result = $conn->query($sql);
     
     // Verificar si se encontró un resultado válido

@@ -226,6 +226,9 @@ CREATE TABLE `usuarios_simulador` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
+ALTER TABLE usuarios_simulador
+ADD estado tinyint(1) NOT NULL DEFAULT '1' AFTER updationDate;
+
 
 INSERT INTO `usuarios_simulador` (`first_name`, `last_name`, `middle_name`, `id_number`, `email`, `birthdate`, `password`)
 VALUES ('jorge', 'Doe', 'Smith', '1234567890', 'jorge@gmail.com', '1990-01-01', 'jorge123');

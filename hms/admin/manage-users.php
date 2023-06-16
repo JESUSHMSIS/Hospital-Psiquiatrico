@@ -6,10 +6,10 @@ include('include/checklogin.php');
 check_login();
 
 if(isset($_GET['del']))
-		  {
-		          mysqli_query($con,"delete from users where id = '".$_GET['id']."'");
-                  $_SESSION['msg']="data deleted !!";
-		  }
+{
+    mysqli_query($con, "UPDATE users SET estado = 0 WHERE id = '".$_GET['id']."'");
+    $_SESSION['msg'] = "Datos desactivados correctamente.";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,7 +83,7 @@ if(isset($_GET['del']))
 										</thead>
 										<tbody>
 <?php
-$sql=mysqli_query($con,"select * from users");
+$sql=mysqli_query($con,"select * from users where estado = 1");
 $cnt=1;
 while($row=mysqli_fetch_array($sql))
 {
