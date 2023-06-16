@@ -7,11 +7,14 @@ check_login();
 if(isset($_POST['submit']))
 {
 	$fname=$_POST['fname'];
+	$last_name=$_POST['last_name'];
+	$middle_name=$_POST['middle_name'];
+	$ci=$_POST['ci'];
 $address=$_POST['address'];
 $city=$_POST['city'];
 $gender=$_POST['gender'];
 
-$sql=mysqli_query($con,"Update users set fullName='$fname',address='$address',city='$city',gender='$gender' where id='".$_SESSION['id']."'");
+$sql=mysqli_query($con,"Update users set fullName='$fname',lastName='$last_name',middleName='$middle_name',ci='$ci',address='$address',city='$city',gender='$gender' where id='".$_SESSION['id']."'");
 if($sql)
 {
 $msg="Su perfil se actualizo correctamente!!";
@@ -101,6 +104,24 @@ while($data=mysqli_fetch_array($sql))
 																 Nombre
 															</label>
 	<input type="text" name="fname" class="form-control" value="<?php echo htmlentities($data['fullName']);?>" >
+														</div>
+														<div class="form-group">
+															<label for="fname">
+																 Apellido Paterno
+															</label>
+	<input type="text" name="last_name" class="form-control" value="<?php echo htmlentities($data['lastName']);?>" >
+														</div>
+														<div class="form-group">
+															<label for="fname">
+																 Apellido Materno
+															</label>
+	<input type="text" name="middle_name" class="form-control" value="<?php echo htmlentities($data['middleName']);?>" >
+														</div>
+														<div class="form-group">
+															<label for="fname">
+																 Carnet de identidad
+															</label>
+	<input type="text" name="ci" class="form-control" value="<?php echo htmlentities($data['ci']);?>" >
 														</div>
 
 

@@ -3,12 +3,15 @@ include_once('include/config.php');
 if(isset($_POST['submit']))
 {
 $fname=$_POST['full_name'];
+$last_name = $_POST['last_name'];
+$middle_name= $_POST['middle_name'];
+$ci=$_POST['ci'];
 $address=$_POST['address'];
 $city=$_POST['city'];
 $gender=$_POST['gender'];
 $email=$_POST['email'];
 $password=md5($_POST['password']);
-$query=mysqli_query($con,"insert into users(fullname,address,city,gender,email,password) values('$fname','$address','$city','$gender','$email','$password')");
+$query=mysqli_query($con,"insert into users(fullname,lastName,middleName,ci,address,city,gender,email,password) values('$fname','$last_name','$middle_name','$ci','$address','$city','$gender','$email','$password')");
 if($query)
 {
 	echo "<script>alert('Registrado correctamente. Ahora inicia sesion!!');</script>";
@@ -70,6 +73,15 @@ return true;
 							</p>
 							<div class="form-group">
 								<input type="text" class="form-control" name="full_name" placeholder="Nombre" required>
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" name="last_name" placeholder="Apellido Paterno" required>
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" name="middle_name" placeholder="Apellido Materno" required>
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" name="ci" placeholder="Ingresa tu numero de carnet" required>
 							</div>
 							<div class="form-group">
 								<input type="text" class="form-control" name="address" placeholder="Direccion" required>

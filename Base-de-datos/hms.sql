@@ -45,21 +45,22 @@ insert  into `appointment`(`id`,`doctorSpecialization`,`doctorId`,`userId`,`cons
 DROP TABLE IF EXISTS `doctors`;
 
 CREATE TABLE `doctors` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `specilization` varchar(255) DEFAULT NULL,
+  `id` int(11) NOT NULL,
+  `specialization` varchar(255) DEFAULT NULL,
   `doctorName` varchar(255) DEFAULT NULL,
+  `lastName` varchar(255) DEFAULT NULL,
+  `middleName` varchar(255) DEFAULT NULL,
+  `ci` varchar(255) DEFAULT NULL,
   `address` longtext DEFAULT NULL,
   `docFees` varchar(255) DEFAULT NULL,
-  `contactno` bigint(11) DEFAULT NULL,
+  `contactNo` bigint(11) DEFAULT NULL,
   `docEmail` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `creationDate` timestamp NULL DEFAULT current_timestamp(),
   `updationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+  `estado` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-ALTER TABLE doctors
-ADD estado tinyint(1) NOT NULL DEFAULT '1' AFTER updationDate;
 
 
 
@@ -184,6 +185,9 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fullName` varchar(255) DEFAULT NULL,
+  `lastName` varchar(255) DEFAULT NULL,
+  `middleName` varchar(255) DEFAULT NULL,
+  `ci` varchar(255) DEFAULT NULL,
   `address` longtext DEFAULT NULL,
   `city` varchar(255) DEFAULT NULL,
   `gender` varchar(255) DEFAULT NULL,
@@ -191,11 +195,11 @@ CREATE TABLE `users` (
   `password` varchar(255) DEFAULT NULL,
   `regDate` timestamp NULL DEFAULT current_timestamp(),
   `updationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
-  PRIMARY KEY (`id`),
-  KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+  `estado` tinyint(1) NOT NULL DEFAULT 1
+   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
+SELECT * FROM users;
 
 insert  into `users`(`id`,`fullName`,`address`,`city`,`gender`,`email`,`password`,`regDate`,`updationDate`) values (2,'Alejandra','Buenos Aires','La Paz','Femenino','alejandra@gmail.com','alejandra123','2016-12-30 00:34:39','0000-00-00 00:00:00');
 
