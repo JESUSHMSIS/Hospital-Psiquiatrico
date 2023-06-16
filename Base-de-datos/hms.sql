@@ -1,7 +1,7 @@
 
-CREATE DATABASE `hms`;
+CREATE DATABASE `hps`;
 
-USE `hms`;
+USE `hps`;
 
 DROP TABLE IF EXISTS `admin`;
 
@@ -57,6 +57,9 @@ CREATE TABLE `doctors` (
   `updationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+ALTER TABLE doctors
+ADD estado tinyint(1) NOT NULL DEFAULT '1' AFTER updationDate;
 
 
 
@@ -208,30 +211,39 @@ CREATE TABLE intentos_usuarios (
 );
 
 
-CREATE TABLE attempts_user (
-    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    id_user INT UNSIGNED NOT NULL,
-    attempt VARCHAR(255) NOT NULL,
-    PRIMARY KEY (id)
-);
+DROP TABLE usuarios_simulador;
+CREATE TABLE `usuarios_simulador` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  `middle_name` varchar(255) DEFAULT NULL,
+  `id_number` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `birthdate` date DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `regDate` timestamp NULL DEFAULT current_timestamp(),
+  `updationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
-DROP TABLE simulador;
-CREATE TABLE `simulador` (
+
+INSERT INTO `usuarios_simulador` (`first_name`, `last_name`, `middle_name`, `id_number`, `email`, `birthdate`, `password`)
+VALUES ('jorge', 'Doe', 'Smith', '1234567890', 'jorge@gmail.com', '1990-01-01', 'jorge123');
+
+
+SELECT * FROM usuarios_simulador;
+
+CREATE TABLE `simulaciones` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `doctorId` int(11) DEFAULT NULL,
   `nombre` varchar(255) DEFAULT NULL,
   `enlace` varchar(255) DEFAULT NULL,
-  `username` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
-ALTER TABLE `simulador` ADD COLUMN `youtube_link` varchar(255) DEFAULT NULL;
-
-
+SELECT * FROM simulaciones;
 DELETE from simulador WHERE doctorId=1;
-INSERT INTO `simulador` (`doctorId`, `nombre`, `enlace`, `username`, `password`) VALUES
-(1, 'simulacion fobia', 'enlace_vihttps://www.youtube.com/watch?v=joXkoT6KV54deo_1', 'simulador', '123456');
+
 
 /*la parte de el encargado de las simulaciones ver las simulaciones editar simulaciones y eliminarlas*/
 

@@ -7,10 +7,11 @@ check_login();
 
 
 if(isset($_GET['del']))
-		  {
-		          mysqli_query($con,"delete from doctors where id = '".$_GET['id']."'");
-                  $_SESSION['msg']="datos eliminados !!";
-		  }
+{
+    mysqli_query($con, "UPDATE doctors SET estado = 0 WHERE id = '".$_GET['id']."'");
+    $_SESSION['msg'] = "Datos desactivados correctamente.";
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,7 +82,7 @@ if(isset($_GET['del']))
 										</thead>
 										<tbody>
 <?php
-$sql=mysqli_query($con,"select * from doctors");
+$sql=mysqli_query($con,"select * from doctors where estado=1");
 $cnt=1;
 while($row=mysqli_fetch_array($sql))
 {
@@ -98,7 +99,7 @@ while($row=mysqli_fetch_array($sql))
 												<div class="visible-md visible-lg hidden-sm hidden-xs">
 							<a href="edit-doctor.php?id=<?php echo $row['id'];?>" class="btn btn-transparent btn-xs" tooltip-placement="top" tooltip="Edit"><i class="fa fa-pencil"></i></a>
 													
-	<a href="manage-doctors.php?id=<?php echo $row['id']?>&del=delete" onClick="return confirm('Estas seguro de que lo quieres borrar?')"class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove"><i class="fa fa-times fa fa-white"></i></a>
+	<a href="manage-doctors.php?id=<?php echo $row['id']?>&del=delete" onClick="return confirm('Estas seguro de que lo quieres desactivar?')"class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove"><i class="fa fa-times fa fa-white"></i></a>
 												</div>
 												<div class="visible-xs visible-sm hidden-md hidden-lg">
 													<div class="btn-group" dropdown is-open="status.isopen">

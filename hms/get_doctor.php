@@ -3,8 +3,8 @@ include('include/config.php');
 if(!empty($_POST["specilizationid"])) 
 {
 
- $sql=mysqli_query($con,"select doctorName,id from doctors where specilization='".$_POST['specilizationid']."'");?>
- <option selected="selected">Select Doctor </option>
+ $sql=mysqli_query($con,"select doctorName,id from doctors where specilization='".$_POST['specilizationid']."'and estado=1");?>
+ <option selected="selected">Selecciona Especialista </option>
  <?php
  while($row=mysqli_fetch_array($sql))
  	{?>

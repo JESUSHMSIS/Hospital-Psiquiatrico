@@ -10,5 +10,5 @@ session_unset();
 $_SESSION['errmsg']="Ha cerrado la sesión con éxito!!";
 ?>
 <script language="javascript">
-document.location="../../index.html";
+document.location="../../index.php";
 </script>

@@ -47,6 +47,11 @@
 											<span class="title"> Lista de especialistas </span>
 										</a>
 									</li>
+									<li>
+										<a href="doctors_des.php">
+											<span class="title"> Especialistas desactivados </span>
+										</a>
+									</li>
 									
 								</ul>
 								</li>

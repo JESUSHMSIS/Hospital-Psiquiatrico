@@ -19,7 +19,7 @@ $sql=mysqli_query($con,"insert into tblpatient(Docid,PatientName,PatientContno,P
 if($sql)
 {
 echo "<script>alert('Paciente añadido correctamente');</script>";
-header('location:add-patient.php');
+header('location:manage-patient.php');
 
 }
 }

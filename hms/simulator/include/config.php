@@ -2,11 +2,11 @@
 define('DB_SERVER','localhost');
 define('DB_USER','root');
 define('DB_PASS' ,'');
-define('DB_NAME', 'hms');
+define('DB_NAME', 'hps');
 $con = mysqli_connect(DB_SERVER,DB_USER,DB_PASS,DB_NAME);
 // Check connection
 if (mysqli_connect_errno())
 {
- echo "Failed to connect to MySQL: " . mysqli_connect_error();
+ echo "Fallo la conexion: " . mysqli_connect_error();
 }
 ?>

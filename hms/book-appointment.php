@@ -19,6 +19,7 @@ $query=mysqli_query($con,"insert into appointment(doctorSpecialization,doctorId,
 	if($query)
 	{
 		echo "<script>alert('Su cita fue agendada correctamente');</script>";
+		header("location:appointment-history.php");
 	}
 
 }

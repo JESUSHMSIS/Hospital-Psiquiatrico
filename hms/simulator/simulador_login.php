@@ -8,7 +8,7 @@ if (isset($_POST['submit'])) {
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "hms";
+    $dbname = "hps";
     
     // Crear conexión
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -19,17 +19,17 @@ if (isset($_POST['submit'])) {
     }
     
     // Obtener los valores enviados desde el formulario de inicio de sesión
-    $username = $_POST['username'];
+    $username = $_POST['email'];
     $password = $_POST['password'];
     
     // Consulta SQL para verificar las credenciales del usuario
-    $sql = "SELECT * FROM simulador WHERE username = '$username' AND password = '$password'";
+    $sql = "SELECT * FROM usuarios_simulador WHERE email = '$username' AND password = '$password'";
     $result = $conn->query($sql);
     
     // Verificar si se encontró un resultado válido
     if ($result->num_rows == 1) {
         // Credenciales válidas, iniciar sesión y redirigir al dashboard
-        $_SESSION['username'] = $username;
+        $_SESSION['email'] = $username;
         header("Location: dashboard.php");
         exit();
     } else {
@@ -38,11 +38,16 @@ if (isset($_POST['submit'])) {
         header("Location: simulador_login.php");
         exit();
     }
-    
-    // Cerrar la conexión a la base de datos
-    $conn->close();
 }
+
+// Verificar si existe el mensaje de error 'errmsg' en el array $_SESSION
+$errmsg = isset($_SESSION['errmsg']) ? $_SESSION['errmsg'] : "";
+
+// Eliminar el mensaje de error después de usarlo
+unset($_SESSION['errmsg']);
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -62,29 +67,11 @@ if (isset($_POST['submit'])) {
 </head>
 <body class="login">
 
-<div class="header">
-    <div class="wrap">
-    <!--start-logo-->
-    <div class="logo">
-        <a href="index.html" style="font-size: 30px; color:black;">Hospital Psiquiátrico</a> 
-    </div>
-    <!--end-logo-->
-    <!--start-top-nav-->
-    <div class="top-nav">
-        <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li class="active"><a href="contact.php">Contact</a></li>
-        </ul>                    
-    </div>
-    <div class="clear"> </div>
-    <!--end-top-nav-->
-</div>
-<!--end-header-->
-</div>
+
 <div class="row">
     <div class="main-login col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
         <div class="logo margin-top-30">
-            <a href="../index.html"><h2> HPS | Login Simulador</h2></a>
+            <a href="../../index.html"><h2> HPS | Login Simulador</h2></a>
         </div>
 
         <div class="box-login">
@@ -95,11 +82,17 @@ if (isset($_POST['submit'])) {
                     </legend>
                     <p>
                         Por favor ingresa tu email y tu contraseña para iniciar sesión<br />
-                        <span style="color:red;"><?php echo $_SESSION['errmsg']; ?><?php echo $_SESSION['errmsg']="";?></span>
+                        <span style="color:red;">
+                            <?php
+                            if ($errmsg != "") {
+                                echo $errmsg;
+                            }
+                            ?>
+                        </span>
                     </p>
                     <div class="form-group">
                         <span class="input-icon">
-                            <input type="text" class="form-control" name="username" placeholder="Email">
+                            <input type="text" class="form-control" name="email" placeholder="Email">
                             <i class="fa fa-user"></i> </span>
                     </div>
                     <div class="form-group form-actions">
@@ -114,12 +107,7 @@ if (isset($_POST['submit'])) {
                     <div class="form-actions">
                         <input type="submit" name="submit" value="Iniciar Sesión" class="btn btn-primary pull-right">
                     </div>
-                    <div class="new-account">
-                        ¿Aún no tienes una cuenta?
-                        <a href="registration.php">
-                            Crea una cuenta 
-                        </a>
-                    </div>
+                    
                 </fieldset>
             </form>
         </div>

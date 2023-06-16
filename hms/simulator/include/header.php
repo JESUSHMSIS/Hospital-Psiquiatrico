@@ -28,31 +28,39 @@
 						
 							<li class="dropdown current-user">
 								<a href class="dropdown-toggle" data-toggle="dropdown">
-									<img src="assets/images/images.jpg"> <span class="username">
+									<img src="assets/images/images.jpg" > <span class="username">
 
 
 
-									<?php $query=mysqli_query($con,"select fullName from users where id='".$_SESSION['id']."'");
-while($row=mysqli_fetch_array($query))
-{
-	echo $row['fullName'];
+									<?php $query = mysqli_query($con, "SELECT first_name FROM usuarios_simulador WHERE email = '" . $_SESSION['email'] . "'");
+if (!$query) {
+    echo "Error en la consulta: " . mysqli_error($con);
+} else {
+    if (mysqli_num_rows($query) > 0) {
+        while ($row = mysqli_fetch_array($query)) {
+            echo $row['first_name'];
+        }
+    } else {
+        echo "No se encontraron resultados.";
+    }
 }
+
 									?> <i class="ti-angle-down"></i></i></span>
 								</a>
 								<ul class="dropdown-menu dropdown-dark">
 									<li>
 										<a href="edit-profile.php">
-											Mi Perfil
+											Mi perfil
 										</a>
 									</li>
 								
 									<li>
 										<a href="change-password.php">
-											Cambiar Contraseña
+											Cambiar contraseña
 										</a>
 									</li>
 									<li>
-										<a href="logout.php">
+										<a href="cerrar_sesion.php">
 											Cerrar Sesion
 										</a>
 									</li>
