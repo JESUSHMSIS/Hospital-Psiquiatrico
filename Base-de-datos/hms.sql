@@ -45,7 +45,7 @@ insert  into `appointment`(`id`,`doctorSpecialization`,`doctorId`,`userId`,`cons
 DROP TABLE IF EXISTS `doctors`;
 
 CREATE TABLE `doctors` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `specialization` varchar(255) DEFAULT NULL,
   `doctorName` varchar(255) DEFAULT NULL,
   `lastName` varchar(255) DEFAULT NULL,
@@ -58,11 +58,14 @@ CREATE TABLE `doctors` (
   `password` varchar(255) DEFAULT NULL,
   `creationDate` timestamp NULL DEFAULT current_timestamp(),
   `updationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
-  `estado` tinyint(1) NOT NULL DEFAULT 1
+  `estado` tinyint(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+SELECT * FROM doctors;
 
-
+INSERT INTO `doctors` (`specialization`, `doctorName`, `lastName`, `middleName`, `ci`, `address`, `docFees`, `contactNo`, `docEmail`, `password`)
+VALUES ('Psiquiatra general', 'John', 'Doe', 'Smith', '123456789', '123 Main St', '100', 1234567890, 'jesus@gmail.com', 'jesus123');
 
 insert  into `doctors`(`id`,`specilization`,`doctorName`,`address`,`docFees`,`contactno`,`docEmail`,`password`,`creationDate`,`updationDate`) values (1,'Psiquiatra general','Jesus','Buenos Aires','0',8285703354,'jesus@gmail.com','jesus123','2016-12-29 01:25:37','2019-06-30 07:11:05');
 
@@ -195,9 +198,10 @@ CREATE TABLE `users` (
   `password` varchar(255) DEFAULT NULL,
   `regDate` timestamp NULL DEFAULT current_timestamp(),
   `updationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
-  `estado` tinyint(1) NOT NULL DEFAULT 1
-   PRIMARY KEY (`id`)
+  `estado` tinyint(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 SELECT * FROM users;
 

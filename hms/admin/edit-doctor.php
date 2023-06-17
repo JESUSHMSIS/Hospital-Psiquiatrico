@@ -58,14 +58,14 @@ $msg="Datos del médico actualizados con éxito";
 						<section id="page-title">
 							<div class="row">
 								<div class="col-sm-8">
-									<h1 class="mainTitle">Admin | Edit Doctor Details</h1>
+									<h1 class="mainTitle">Admin | Editar detalles de especialista</h1>
 																	</div>
 								<ol class="breadcrumb">
 									<li>
 										<span>Admin</span>
 									</li>
 									<li class="active">
-										<span>Edit Doctor Details</span>
+										<span>Editar detalles de especialista</span>
 									</li>
 								</ol>
 							</div>
@@ -81,14 +81,14 @@ $msg="Datos del médico actualizados con éxito";
 										<div class="col-lg-8 col-md-12">
 											<div class="panel panel-white">
 												<div class="panel-heading">
-													<h5 class="panel-title">Edit Doctor info</h5>
+													<h5 class="panel-title">Editar informacion</h5>
 												</div>
 												<div class="panel-body">
 									<?php $sql=mysqli_query($con,"select * from doctors where id='$did'");
 while($data=mysqli_fetch_array($sql))
 {
 ?>
-<h4><?php echo htmlentities($data['doctorName']);?>'s Profile</h4>
+<h4><?php echo htmlentities($data['doctorName']);?> Perfil</h4>
 <p><b>Perfil Reg Fecha: </b><?php echo htmlentities($data['creationDate']);?></p>
 <?php if($data['updationDate']){?>
 <p><b>Fecha de última actualización del perfil: </b><?php echo htmlentities($data['updationDate']);?></p>

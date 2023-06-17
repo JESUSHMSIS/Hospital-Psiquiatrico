@@ -90,7 +90,6 @@ while($row=mysqli_fetch_array($sql))
 </td>
 <td>
 
-<a href="view-patient.php?viewid=<?php echo $row['ID'];?>"><i class="fa fa-eye"></i></a>
 <a href="manage-simulators.php?id=<?php echo $row['id']?>&del=delete" onClick="return confirm('Estas seguro de que lo quieres desactivar?')"class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove"><i class="fa fa-times fa fa-white"></i></a>
 
 </td>

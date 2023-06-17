@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-06-2023 a las 22:42:56
+-- Tiempo de generación: 17-06-2023 a las 15:50:51
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -71,7 +71,9 @@ INSERT INTO `appointment` (`id`, `doctorSpecialization`, `doctorId`, `userId`, `
 (8, 'Psiquiatra general', 1, 8, 0, '2023-06-21', '2:30 PM', '2023-06-14 18:27:52', 1, 1, NULL),
 (9, 'Psiquiatra general', 1, 8, 0, '2023-06-23', '5:00 PM', '2023-06-14 20:58:02', 1, 0, '2023-06-14 21:02:16'),
 (10, 'Psiquiatra general', 1, 8, 0, '2023-06-23', '12:45 PM', '2023-06-15 16:31:44', 0, 1, '2023-06-16 20:39:53'),
-(11, 'Psiquiatra general', 1, 8, 0, '2023-06-15', '4:45 PM', '2023-06-16 20:39:49', 1, 1, NULL);
+(11, 'Psiquiatra general', 1, 8, 0, '2023-06-15', '4:45 PM', '2023-06-16 20:39:49', 1, 1, NULL),
+(12, 'Psiquiatra general', 1, 1, 0, '2023-06-27', '5:45 PM', '2023-06-16 21:38:53', 1, 1, NULL),
+(13, 'Psiquiatra general', 10, 1, 0, '2023-06-22', '7:45 PM', '2023-06-16 23:33:59', 1, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -98,8 +100,8 @@ CREATE TABLE `doctors` (
 --
 
 INSERT INTO `doctors` (`id`, `specilization`, `doctorName`, `address`, `docFees`, `contactno`, `docEmail`, `password`, `creationDate`, `updationDate`, `estado`) VALUES
-(1, 'Psiquiatra general', 'Jesus', 'Buenos Aires', '0', 8285703354, 'jesus@gmail.com', 'ab3b3e6556b4a9e7033cf87bf338862b', '2016-12-29 05:25:37', '2023-06-16 03:37:28', 1),
-(10, 'Psiquiatra general', 'Alejandra', 'desconocido', '200', 78815708, 'alejandra@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2023-06-14 18:05:24', '2023-06-16 12:11:24', 0);
+(10, 'Psiquiatra general', 'Jesus', 'buenos aires', '0', 78815708, 'jesus@gmail.com', 'ab3b3e6556b4a9e7033cf87bf338862b', '2023-06-16 22:32:58', NULL, 1),
+(11, 'Psiquiatra general', 'Marco', 'Buenos aires', '0', 78815708, 'marco@gmail.com', '9985039da9a041e4e95a6e62e63adf76', '2023-06-16 23:39:25', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -155,7 +157,14 @@ INSERT INTO `doctorslog` (`id`, `uid`, `username`, `userip`, `loginTime`, `logou
 (51, 1, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 18:56:28', NULL, 1),
 (52, 1, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 19:15:31', '17-06-2023 12:45:56 AM', 1),
 (53, 1, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 20:39:27', NULL, 1),
-(54, 1, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 20:40:24', NULL, 1);
+(54, 1, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 20:40:24', NULL, 1),
+(55, 1, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 21:39:15', NULL, 1),
+(56, NULL, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 22:17:46', NULL, 0),
+(57, NULL, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 22:17:57', NULL, 0),
+(58, 1, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 22:18:24', '17-06-2023 03:54:07 AM', 1),
+(59, 1, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 22:25:03', '17-06-2023 05:21:18 AM', 1),
+(60, 10, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 23:43:07', NULL, 1),
+(61, 10, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-17 13:46:59', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -175,7 +184,8 @@ CREATE TABLE `doctorspecilization` (
 --
 
 INSERT INTO `doctorspecilization` (`id`, `specilization`, `creationDate`, `updationDate`) VALUES
-(1, 'Psiquiatra general', '2016-12-28 05:37:25', '0000-00-00 00:00:00');
+(1, 'Psiquiatra general', '2016-12-28 05:37:25', '0000-00-00 00:00:00'),
+(13, 'Psiquiatra menor', '2023-06-16 22:24:43', NULL);
 
 -- --------------------------------------------------------
 
@@ -198,7 +208,15 @@ INSERT INTO `intentos_usuarios` (`id`, `id_usuario`, `intento`) VALUES
 (4, 0, '2023-06-16 16:02:57'),
 (5, 0, '2023-06-16 16:03:02'),
 (6, 0, '2023-06-16 16:03:10'),
-(7, 0, '2023-06-16 16:40:09');
+(7, 0, '2023-06-16 16:40:09'),
+(8, 0, '2023-06-16 17:43:47'),
+(9, 0, '2023-06-16 17:43:58'),
+(10, 0, '2023-06-16 17:44:06'),
+(11, 0, '2023-06-16 17:49:25'),
+(12, 0, '2023-06-16 17:49:31'),
+(13, 0, '2023-06-16 18:43:07'),
+(14, 0, '2023-06-16 19:47:55'),
+(15, 0, '2023-06-16 19:48:05');
 
 -- --------------------------------------------------------
 
@@ -212,13 +230,6 @@ CREATE TABLE `simulaciones` (
   `nombre` varchar(255) DEFAULT NULL,
   `enlace` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `simulaciones`
---
-
-INSERT INTO `simulaciones` (`id`, `doctorId`, `nombre`, `enlace`) VALUES
-(3, NULL, 'nuevo tema', 'https://www.youtube.com/watch?v=qzcDeJb2WSU&list=RDla0UNW6FURo&index=11');
 
 -- --------------------------------------------------------
 
@@ -244,7 +255,8 @@ CREATE TABLE `tblcontactus` (
 
 INSERT INTO `tblcontactus` (`id`, `fullname`, `email`, `contactno`, `message`, `PostingDate`, `AdminRemark`, `LastupdationDate`, `IsRead`) VALUES
 (1, 'fdsfsdf', 'fsdfsd@ghashhgs.com', 3264826346, 'mensaje de ejemplo', '2019-11-10 17:53:48', 'vfdsfgfd', '2019-11-10 17:54:04', 1),
-(4, 'Jose', 'jose@gmail.com', 3252352, 'quisiera que me desbaneen mi cuenta\r\n', '2023-06-16 19:18:35', NULL, NULL, NULL);
+(4, 'Jose', 'jose@gmail.com', 3252352, 'quisiera que me desbaneen mi cuenta\r\n', '2023-06-16 19:18:35', NULL, NULL, NULL),
+(5, 'Alejandra', 'alejandra@gmail.com', 88952352, 'tengo un problema con el sistema ', '2023-06-16 21:51:16', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -297,7 +309,8 @@ CREATE TABLE `tblpatient` (
 
 INSERT INTO `tblpatient` (`ID`, `Docid`, `PatientName`, `PatientContno`, `PatientEmail`, `PatientGender`, `PatientAdd`, `PatientAge`, `PatientMedhis`, `CreationDate`, `UpdationDate`) VALUES
 (1, 1, 'Alejandra', 4558968789, 'alejandra@gmail.com', 'Femenino', '\"\"J&K Block J-127, Buenos Aires', 26, 'Ella esta bien', '2019-11-04 20:38:06', '2019-11-06 05:48:05'),
-(6, 1, 'jose', 4435634, 'jose@gmail.com', 'masculino', 'Buenos Aires', 49, 'ninguno', '2023-06-14 21:03:18', NULL);
+(6, 1, 'jose', 4435634, 'jose@gmail.com', 'masculino', 'Buenos Aires', 49, 'ninguno', '2023-06-14 21:03:18', NULL),
+(7, 10, 'jose', 12345678, 'jes@gmail.com', 'masculino', 'Buenos Aires', 43, 'ninguno', '2023-06-16 23:45:03', NULL);
 
 -- --------------------------------------------------------
 
@@ -343,7 +356,24 @@ INSERT INTO `userlog` (`id`, `uid`, `username`, `userip`, `loginTime`, `logout`,
 (44, NULL, 'jose@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 20:03:10', NULL, 0),
 (45, 8, 'jose@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 20:03:29', '17-06-2023 01:33:33 AM', 1),
 (46, 8, 'jose@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 20:39:36', NULL, 1),
-(47, NULL, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 20:40:09', NULL, 0);
+(47, NULL, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 20:40:09', NULL, 0),
+(48, 1, 'jose@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 21:31:28', '17-06-2023 03:13:36 AM', 1),
+(49, NULL, 'jose@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 21:43:48', NULL, 0),
+(50, NULL, 'jose@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 21:43:58', NULL, 0),
+(51, NULL, 'jose@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 21:44:06', NULL, 0),
+(52, 1, 'jose@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 21:44:15', '17-06-2023 03:17:15 AM', 1),
+(53, 1, 'jose@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 21:48:07', '17-06-2023 03:19:15 AM', 1),
+(54, NULL, 'jose@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 21:49:26', NULL, 0),
+(55, NULL, 'jose@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 21:49:31', NULL, 0),
+(56, NULL, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 22:43:07', NULL, 0),
+(57, 1, 'jose@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 22:43:15', '17-06-2023 04:28:58 AM', 1),
+(58, 3, 'moises@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 23:15:07', '17-06-2023 04:45:13 AM', 1),
+(59, 1, 'jose@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 23:33:39', NULL, 1),
+(60, NULL, 'jose@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 23:47:55', NULL, 0),
+(61, NULL, 'jose@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 23:48:06', NULL, 0),
+(62, NULL, 'jose@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 23:48:52', NULL, 0),
+(63, NULL, 'jose@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 23:48:58', NULL, 0),
+(64, 1, 'jose@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 23:49:27', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -354,6 +384,9 @@ INSERT INTO `userlog` (`id`, `uid`, `username`, `userip`, `loginTime`, `logout`,
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `fullName` varchar(255) DEFAULT NULL,
+  `lastName` varchar(255) DEFAULT NULL,
+  `middleName` varchar(255) DEFAULT NULL,
+  `ci` varchar(255) DEFAULT NULL,
   `address` longtext DEFAULT NULL,
   `city` varchar(255) DEFAULT NULL,
   `gender` varchar(255) DEFAULT NULL,
@@ -368,9 +401,10 @@ CREATE TABLE `users` (
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `fullName`, `address`, `city`, `gender`, `email`, `password`, `regDate`, `updationDate`, `estado`) VALUES
-(2, 'Alejandra', 'Buenos Aires', 'La Paz', 'Femenino', 'alejandra@gmail.com', 'alejandra123', '2016-12-30 04:34:39', '2023-06-16 19:53:22', 1),
-(8, 'jose antonio', 'Buenos Aires', 'La paz', 'masculino', 'jose@gmail.com', '90e528618534d005b1a7e7b7a367813f', '2023-06-14 18:07:24', '2023-06-16 20:03:18', 1);
+INSERT INTO `users` (`id`, `fullName`, `lastName`, `middleName`, `ci`, `address`, `city`, `gender`, `email`, `password`, `regDate`, `updationDate`, `estado`) VALUES
+(1, 'jose antonio', 'Huanaca', 'Perez', '32423443', 'buenos aires', 'La paz', 'masculino', 'jose@gmail.com', '90e528618534d005b1a7e7b7a367813f', '2023-06-16 21:31:18', '2023-06-16 23:48:31', 1),
+(2, 'marco', 'maquera', 'pacosillo', '52352352', 'Buenos Aires', 'La paz', 'masculino', 'marco@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2023-06-16 23:13:54', NULL, 1),
+(3, 'Moises', 'Paco', 'Perez', '10083746', 'Buenos Aires', 'La paz', 'masculino', 'moises@gmail.com', 'a4f80546e0e2319d302d5e6fe30af835', '2023-06-16 23:14:51', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -476,8 +510,7 @@ ALTER TABLE `userlog`
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `email` (`email`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `usuarios_simulador`
@@ -499,31 +532,31 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT de la tabla `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `doctors`
 --
 ALTER TABLE `doctors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `doctorslog`
 --
 ALTER TABLE `doctorslog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT de la tabla `doctorspecilization`
 --
 ALTER TABLE `doctorspecilization`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `intentos_usuarios`
 --
 ALTER TABLE `intentos_usuarios`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `simulaciones`
@@ -535,7 +568,7 @@ ALTER TABLE `simulaciones`
 -- AUTO_INCREMENT de la tabla `tblcontactus`
 --
 ALTER TABLE `tblcontactus`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `tblmedicalhistory`
@@ -547,19 +580,19 @@ ALTER TABLE `tblmedicalhistory`
 -- AUTO_INCREMENT de la tabla `tblpatient`
 --
 ALTER TABLE `tblpatient`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `userlog`
 --
 ALTER TABLE `userlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios_simulador`

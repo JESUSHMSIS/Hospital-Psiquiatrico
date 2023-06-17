@@ -22,6 +22,14 @@ $msg="Su perfil se actualizo correctamente!!";
 
 }
 
+if (empty($last_name) && empty($middle_name)) {
+	echo "<script>alert('Debe proporcionar al menos uno de los campos de Apellido Paterno o Apellido Materno.');</script>";
+} else {
+	// Los campos de apellido cumplen con la validación, puedes continuar con el procesamiento de los datos y la actualización en la base de datos.
+	
+	// Resto del código de actualización de datos y consulta SQL...
+}
+
 }
 ?>
 <!DOCTYPE html>
@@ -103,25 +111,25 @@ while($data=mysqli_fetch_array($sql))
 															<label for="fname">
 																 Nombre
 															</label>
-	<input type="text" name="fname" class="form-control" value="<?php echo htmlentities($data['fullName']);?>" >
+	<input type="text" name="fname" maxlength="20" class="form-control" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" value="<?php echo htmlentities($data['fullName']);?>" >
 														</div>
 														<div class="form-group">
 															<label for="fname">
 																 Apellido Paterno
 															</label>
-	<input type="text" name="last_name" class="form-control" value="<?php echo htmlentities($data['lastName']);?>" >
+	<input type="text" name="last_name" minlength="2" maxlength="25" class="form-control" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" value="<?php echo htmlentities($data['lastName']);?>" >
 														</div>
 														<div class="form-group">
 															<label for="fname">
 																 Apellido Materno
 															</label>
-	<input type="text" name="middle_name" class="form-control" value="<?php echo htmlentities($data['middleName']);?>" >
+	<input type="text" name="middle_name" minlength="2" maxlength="25" class="form-control" pattern="[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+" value="<?php echo htmlentities($data['middleName']);?>" >
 														</div>
 														<div class="form-group">
 															<label for="fname">
 																 Carnet de identidad
 															</label>
-	<input type="text" name="ci" class="form-control" value="<?php echo htmlentities($data['ci']);?>" >
+															<input type="text" name="ci" class="form-control" pattern="[0-9]{6,10}" value="<?php echo htmlentities($data['ci']);?>">
 														</div>
 
 
@@ -129,7 +137,7 @@ while($data=mysqli_fetch_array($sql))
 															<label for="address">
 																 Direccion
 															</label>
-					<textarea name="address" class="form-control"><?php echo htmlentities($data['address']);?></textarea>
+					<textarea name="address" class="form-control" required><?php echo htmlentities($data['address']);?></textarea>
 														</div>
 <div class="form-group">
 															<label for="city">

@@ -39,17 +39,25 @@ if($query)
 		<link rel="stylesheet" href="assets/css/themes/theme-1.css" id="skin_color" />
 		
 		<script type="text/javascript">
-function valid()
-{
- if(document.registration.password.value!= document.registration.password_again.value)
-{
-alert("Contraseña o confirmacion de contraseña no coinciden!!");
-document.registration.password_again.focus();
-return false;
-}
-return true;
-}
-</script>
+        function valid() {
+            if (document.registration.password.value != document.registration.password_again.value) {
+                alert("Contraseña o confirmación de contraseña no coinciden!!");
+                document.registration.password_again.focus();
+                return false;
+            }
+
+            // Validar correo electrónico
+            var email = document.registration.email.value;
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Por favor, ingresa un correo electrónico válido");
+                document.registration.email.focus();
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 		
 
 	</head>
@@ -63,87 +71,70 @@ return true;
 				</div>
 				<!-- start: REGISTER BOX -->
 				<div class="box-register">
-					<form name="registration" id="registration"  method="post" onSubmit="return valid();">
-						<fieldset>
-							<legend>
-								Registrate
-							</legend>
-							<p>
-								Ingresa tus datos personales:
-							</p>
-							<div class="form-group">
-								<input type="text" class="form-control" name="full_name" placeholder="Nombre" required>
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" name="last_name" placeholder="Apellido Paterno" required>
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" name="middle_name" placeholder="Apellido Materno" required>
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" name="ci" placeholder="Ingresa tu numero de carnet" required>
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" name="address" placeholder="Direccion" required>
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" name="city" placeholder="Ciudad" required>
-							</div>
-							<div class="form-group">
-								<label class="block">
-									Genero
-								</label>
-								<div class="clip-radio radio-primary">
-									<input type="radio" id="rg-female" name="gender" value="femenino" >
-									<label for="rg-female">
-										Femenino
-									</label>
-									<input type="radio" id="rg-male" name="gender" value="masculino">
-									<label for="rg-male">
-										Masculino
-									</label>
-								</div>
-							</div>
-							<p>
-								Ingresa datos para tu cuenta:
-							</p>
-							<div class="form-group">
-								<span class="input-icon">
-									<input type="email" class="form-control" name="email" id="email" onBlur="userAvailability()"  placeholder="Email" required>
-									<i class="fa fa-envelope"></i> </span>
-									 <span id="user-availability-status1" style="font-size:12px;"></span>
-							</div>
-							<div class="form-group">
-								<span class="input-icon">
-									<input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" required>
-									<i class="fa fa-lock"></i> </span>
-							</div>
-							<div class="form-group">
-								<span class="input-icon">
-									<input type="password" class="form-control"  id="password_again" name="password_again" placeholder="Confirmar contraseña" required>
-									<i class="fa fa-lock"></i> </span>
-							</div>
-							<div class="form-group">
-								<div class="checkbox clip-check check-primary">
-									<input type="checkbox" id="agree" value="agree" checked="true" readonly=" true">
-									<label for="agree">
-										Estoy de acuerdo
-									</label>
-								</div>
-							</div>
-							<div class="form-actions">
-								<p>
-									Ya tienes una cuenta?
-									<a href="user-login.php">
-										Iniciar Sesion
-									</a>
-								</p>
-								<button type="submit" class="btn btn-primary pull-right" id="submit" name="submit">
-									Enviar <i class="fa fa-arrow-circle-right"></i>
-								</button>
-							</div>
-						</fieldset>
-					</form>
+				<form name="registration" id="registration" method="post" onSubmit="return valid();">
+    <fieldset>
+        <legend>Regístrate</legend>
+        <p>Ingresa tus datos personales:</p>
+        <div class="form-group">
+            <input type="text" class="form-control" name="full_name" placeholder="Nombre" pattern="[A-Za-z\s]+" title="Solo se permiten letras" required>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="last_name" placeholder="Apellido Paterno" pattern="[A-Za-z\s]+" title="Solo se permiten letras" required>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="middle_name" placeholder="Apellido Materno" pattern="[A-Za-z\s]+" title="Solo se permiten letras" required>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="ci" placeholder="Ingresa tu número de carnet" pattern="[0-9]+" title="Solo se permiten números" minlength="8" maxlength="10" required>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="address" placeholder="Dirección" required>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="city" placeholder="Ciudad" required>
+        </div>
+        <div class="form-group">
+            <label class="block">Género</label>
+            <div class="clip-radio radio-primary">
+                <input type="radio" id="rg-female" name="gender" value="femenino" required>
+                <label for="rg-female">Femenino</label>
+                <input type="radio" id="rg-male" name="gender" value="masculino" required>
+                <label for="rg-male">Masculino</label>
+            </div>
+        </div>
+        <p>Ingresa datos para tu cuenta:</p>
+        <div class="form-group">
+            <span class="input-icon">
+                <input type="email" class="form-control" name="email" id="email" onBlur="userAvailability()" placeholder="Email" required>
+                <i class="fa fa-envelope"></i>
+            </span>
+            <span id="user-availability-status1" style="font-size:12px;"></span>
+        </div>
+        <div class="form-group">
+    <span class="input-icon">
+        <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" pattern="^(?=.*\d)(?=.*[A-Z]).+$" title="La contraseña debe contener al menos un número y una letra mayúscula" required>
+        <i class="fa fa-lock"></i>
+    </span>
+</div>
+<div class="form-group">
+    <span class="input-icon">
+        <input type="password" class="form-control" id="password_again" name="password_again" placeholder="Confirmar contraseña" required>
+        <i class="fa fa-lock"></i>
+    </span>
+</div>
+
+        <div class="form-group">
+            <div class="checkbox clip-check check-primary">
+                <input type="checkbox" id="agree" value="agree" checked="true" readonly="true" required>
+                <label for="agree">Estoy de acuerdo</label>
+            </div>
+        </div>
+        <div class="form-actions">
+            <p>¿Ya tienes una cuenta? <a href="user-login.php">Iniciar Sesión</a></p>
+            <button type="submit" class="btn btn-primary pull-right" id="submit" name="submit">Enviar <i class="fa fa-arrow-circle-right"></i></button>
+        </div>
+    </fieldset>
+</form>
 
 					<div class="copyright">
 						&copy; <span class="current-year"></span><span class="text-bold text-uppercase"> HPS</span>. <span>Todos los derechos reservados</span>
