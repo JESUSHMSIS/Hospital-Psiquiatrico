@@ -57,7 +57,7 @@ if (isset($_POST['submit'])) {
 function obtenerUsuarioId($correo)
 {
     global $con;
-    $query = mysqli_query($con, "SELECT id FROM users WHERE email='$correo' and estado=1" );
+    $query = mysqli_query($con, "SELECT id FROM users WHERE email='$correo'");
     $row = mysqli_fetch_assoc($query);
     return $row['id'];
 }
@@ -74,7 +74,7 @@ function hacerLogin($correo, $palabraSecreta)
     }
     
     # Consultar la información del usuario y verificar las credenciales
-    $ret = mysqli_query($con, "SELECT * FROM users WHERE email='$correo' AND password='$palabraSecreta' and estado = 1");
+    $ret = mysqli_query($con, "SELECT * FROM users WHERE email='$correo' AND password='$palabraSecreta'");
     $num = mysqli_fetch_array($ret);
     
     if ($num > 0) {
@@ -90,7 +90,7 @@ function hacerLogin($correo, $palabraSecreta)
 function obtenerConteoIntentosFallidos($correo)
 {
     global $con;
-    $query = mysqli_query($con, "SELECT COUNT(*) AS conteo FROM intentos_usuarios WHERE id_usuario=(SELECT id FROM users WHERE email='$correo' and estado = 1)");
+    $query = mysqli_query($con, "SELECT COUNT(*) AS conteo FROM intentos_usuarios WHERE id_usuario=(SELECT id FROM users WHERE email='$correo')");
     $row = mysqli_fetch_assoc($query);
     return $row['conteo'];
 }
@@ -116,11 +116,9 @@ function obtenerUsuariosConIntentosFallidos()
 {
     global $con;
     $query = "SELECT u.id, u.fullName, u.email, COUNT(i.id) AS intentos_fallidos
-    FROM users u 
-    LEFT JOIN intentos_usuarios i ON u.id = i.id_usuario
-    WHERE u.estado = 1
-    GROUP BY u.id, u.fullName, u.email";
-
+              FROM users u
+              LEFT JOIN intentos_usuarios i ON u.id = i.id_usuario
+              GROUP BY u.id, u.fullName, u.email";
     $result = mysqli_query($con, $query);
     
     $usuarios = array();

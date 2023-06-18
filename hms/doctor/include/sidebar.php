@@ -60,6 +60,28 @@
 									
 								</ul>
 								</li>
+								<li>
+								<a href="javascript:void(0)">
+									<div class="item-content">
+										<div class="item-media">
+											<i class="ti-user"></i>
+										</div>
+										<div class="item-inner">
+											<span class="title"> Simulaciones</span><i class="icon-arrow"></i>
+										</div>
+									</div>
+								</a>
+								<ul class="sub-menu">
+									
+								
+									<li>
+										<a href="simulations.php">
+											<span class="title"> Ver Simulaciones </span>
+										</a>
+									</li>
+									
+								</ul>
+								</li>
 <li>
 								<a href="search.php">
 									<div class="item-content">

@@ -105,6 +105,12 @@
 											<span class="title"> Añadir Pacientes </span>
 										</a>
 									</li>
+									<li>
+										<a href="patient-des.php">
+											<span class="title"> Pacientes desactivados </span>
+										</a>
+									</li>
+
 									
 								</ul>
 								</li>

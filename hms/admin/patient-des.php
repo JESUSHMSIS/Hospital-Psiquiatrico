@@ -9,7 +9,7 @@ if(isset($_POST['reactivar'])) {
     $id = $_POST['id'];
     mysqli_query($con, "UPDATE tblpatient SET estado = 1 WHERE id = $id");
     $_SESSION['msg'] = "Usuario reactivado correctamente.";
-    header("location:manage-doctors.php");
+    header("location:manage-patient.php");
 }
 
 
@@ -17,7 +17,7 @@ if(isset($_POST['reactivar'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Admin | Lista de Especialistas</title>
+    <title>Admin | Lista de Pacientes</title>
     
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
@@ -44,14 +44,14 @@ if(isset($_POST['reactivar'])) {
                     <section id="page-title">
                         <div class="row">
                             <div class="col-sm-8">
-                                <h1 class="mainTitle">Admin | Lista de Especialistas</h1>
+                                <h1 class="mainTitle">Admin | Lista de Pacientes</h1>
                             </div>
                             <ol class="breadcrumb">
                                 <li>
                                     <span>Admin</span>
                                 </li>
                                 <li class="active">
-                                    <span>Lista de Especialistas</span>
+                                    <span>Lista de Pacientes</span>
                                 </li>
                             </ol>
                         </div>
@@ -75,16 +75,16 @@ if(isset($_POST['reactivar'])) {
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $sql=mysqli_query($con,"select * from doctors where estado=0");
+                                        $sql=mysqli_query($con,"select * from tblpatient where estado=0");
                                         $cnt=1;
                                         while($row=mysqli_fetch_array($sql))
                                         {
                                         ?>
                                         <tr>
                                             <td class="center"><?php echo $cnt;?>.</td>
-                                            <td class="hidden-xs"><?php echo $row['specilization'];?></td>
-                                            <td><?php echo $row['doctorName'];?></td>
-                                            <td><?php echo $row['creationDate'];?></td>
+                                            <td class="hidden-xs"><?php echo $row['PatientName'];?></td>
+                                            <td><?php echo $row['PatientContno'];?></td>
+                                            <td><?php echo $row['CreationDate'];?></td>
                                             
                                             <td>
                                            <?php
