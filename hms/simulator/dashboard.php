@@ -79,8 +79,8 @@ check_login();
 											<h2 class="StepTitle">Simulaciones</h2>
 										
 											<p class="cl-effect-1">
-												<a href="add_simulation.php">
-													Añadir simulaciones
+												<a href="view-simulations.php">
+													Ver simulaciones
 												</a>
 											</p>
 										</div>

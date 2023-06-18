@@ -5,6 +5,14 @@ include('include/config.php');
 include('include/checklogin.php');
 check_login();
 
+if(isset($_GET['del']))
+{
+    mysqli_query($con, "UPDATE doctors SET estado = 0 WHERE id = '".$_GET['id']."'");
+    $_SESSION['msg'] = "Datos desactivados correctamente.";
+}
+
+?>
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -85,7 +93,7 @@ while($row=mysqli_fetch_array($sql))
 <td>
 
 <a href="view-patient.php?viewid=<?php echo $row['ID'];?>"><i class="fa fa-eye"></i></a>
-
+<a href="manage-simulators.php?id=<?php echo $row['id']?>&del=delete" onClick="return confirm('Estas seguro de que lo quieres desactivar?')"class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove"><i class="fa fa-times fa fa-white"></i></a>
 </td>
 </tr>
 <?php 

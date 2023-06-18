@@ -46,26 +46,22 @@ DROP TABLE IF EXISTS `doctors`;
 
 CREATE TABLE `doctors` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `specialization` varchar(255) DEFAULT NULL,
+  `specilization` varchar(255) DEFAULT NULL,
   `doctorName` varchar(255) DEFAULT NULL,
-  `lastName` varchar(255) DEFAULT NULL,
-  `middleName` varchar(255) DEFAULT NULL,
-  `ci` varchar(255) DEFAULT NULL,
   `address` longtext DEFAULT NULL,
   `docFees` varchar(255) DEFAULT NULL,
-  `contactNo` bigint(11) DEFAULT NULL,
+  `contactno` bigint(11) DEFAULT NULL,
   `docEmail` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `creationDate` timestamp NULL DEFAULT current_timestamp(),
   `updationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
-  `estado` tinyint(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
-SELECT * FROM doctors;
+ALTER TABLE doctors
+ADD estado tinyint(1) NOT NULL DEFAULT '1' AFTER updationDate;
 
-INSERT INTO `doctors` (`specialization`, `doctorName`, `lastName`, `middleName`, `ci`, `address`, `docFees`, `contactNo`, `docEmail`, `password`)
-VALUES ('Psiquiatra general', 'John', 'Doe', 'Smith', '123456789', '123 Main St', '100', 1234567890, 'jesus@gmail.com', 'jesus123');
+
 
 insert  into `doctors`(`id`,`specilization`,`doctorName`,`address`,`docFees`,`contactno`,`docEmail`,`password`,`creationDate`,`updationDate`) values (1,'Psiquiatra general','Jesus','Buenos Aires','0',8285703354,'jesus@gmail.com','jesus123','2016-12-29 01:25:37','2019-06-30 07:11:05');
 
@@ -161,6 +157,9 @@ CREATE TABLE `tblpatient` (
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
+ALTER TABLE tblpatient
+ADD estado tinyint(1) NOT NULL DEFAULT '1' AFTER updationDate;
+SELECT * FROM tblpatient;
 insert  into `tblpatient`(`ID`,`Docid`,`PatientName`,`PatientContno`,`PatientEmail`,`PatientGender`,`PatientAdd`,`PatientAge`,`PatientMedhis`,`CreationDate`,`UpdationDate`) values (1,1,'Alejandra',4558968789,'alejandra@gmail.com','Femenino','\"\"J&K Block J-127, Buenos Aires',26,'Ella esta bien','2019-11-04 16:38:06','2019-11-06 01:48:05');
 
 
@@ -186,7 +185,7 @@ insert  into `userlog`(`id`,`uid`,`username`,`userip`,`loginTime`,`logout`,`stat
 DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `fullName` varchar(255) DEFAULT NULL,
   `lastName` varchar(255) DEFAULT NULL,
   `middleName` varchar(255) DEFAULT NULL,
@@ -198,13 +197,11 @@ CREATE TABLE `users` (
   `password` varchar(255) DEFAULT NULL,
   `regDate` timestamp NULL DEFAULT current_timestamp(),
   `updationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
-  `estado` tinyint(1) NOT NULL DEFAULT 1,
-  PRIMARY KEY (`id`)
+  `ci` varchar(255) DEFAULT NULL,
+  `estado` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
-SELECT * FROM users;
-
+select * FROM users;
 insert  into `users`(`id`,`fullName`,`address`,`city`,`gender`,`email`,`password`,`regDate`,`updationDate`) values (2,'Alejandra','Buenos Aires','La Paz','Femenino','alejandra@gmail.com','alejandra123','2016-12-30 00:34:39','0000-00-00 00:00:00');
 
 

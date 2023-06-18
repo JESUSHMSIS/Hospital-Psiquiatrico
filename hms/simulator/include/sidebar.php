@@ -36,8 +36,13 @@
 								<ul class="sub-menu">
 									
 									<li>
-										<a href="add-patient.php">
+										<a href="add_simulation.php">
 											<span class="title"> Añadir simulacion</span>
+										</a>
+									</li>
+									<li>
+										<a href="view-simulations.php">
+											<span class="title"> Ver simulacion</span>
 										</a>
 									</li>
 							
