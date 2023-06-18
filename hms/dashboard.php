@@ -110,7 +110,7 @@ check_login();
 											<h2 class="StepTitle">Mis evaluaciones</h2>
 										
 											<p class="cl-effect-1">
-												<a href="evaluations_patient.php">
+												<a href="manage-medhistory.php">
 													Ver mi evaluacion
 												</a>
 											</p>

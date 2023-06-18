@@ -85,6 +85,7 @@ while($row=mysqli_fetch_array($sql))
 <td>
 
 <a href="view-medhistory.php?viewid=<?php echo $row['ID'];?>"><i class="fa fa-eye"></i></a>
+|| <a href="evaluations.php?viewid=<?php echo $row['ID'];?>"><i class="fa fa-edit"></i></a>
 
 </td>
 </tr>

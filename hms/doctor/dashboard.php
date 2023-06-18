@@ -109,9 +109,7 @@ check_login();
 											<h2 class="StepTitle">Evaluacion</h2>
 										
 											<p class="cl-effect-1">
-												<a href="evaluations.php">
-													Hacer evaluaciones
-												</a>
+											<a href="manage-patient.php">Hacer evaluacion</a>
 											</p>
 										</div>
 									</div>

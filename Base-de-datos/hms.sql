@@ -154,6 +154,7 @@ CREATE TABLE `tblpatient` (
   `PatientMedhis` mediumtext DEFAULT NULL,
   `CreationDate` timestamp NULL DEFAULT current_timestamp(),
   `UpdationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+  estado tinyint(1) NOT NULL DEFAULT '1'
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
@@ -256,3 +257,16 @@ DELETE from simulador WHERE doctorId=1;
 /*la parte de el encargado de las simulaciones ver las simulaciones editar simulaciones y eliminarlas*/
 
 SELECT * FROM simulador;
+
+
+CREATE TABLE `tblpatientevaluation` (
+  `ID` int(10) NOT NULL AUTO_INCREMENT,
+  `PatientID` int(10) DEFAULT NULL,
+  `Symptoms` varchar(200) DEFAULT NULL,
+  `Diagnosis` varchar(200) NOT NULL,
+  `SpecialistComments` mediumtext DEFAULT NULL,
+  `ProgressRating` int(3) DEFAULT NULL,
+  `CreationDate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
