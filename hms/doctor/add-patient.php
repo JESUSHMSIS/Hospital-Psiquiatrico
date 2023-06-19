@@ -15,7 +15,10 @@ $gender=$_POST['gender'];
 $pataddress=$_POST['pataddress'];
 $patage=$_POST['patage'];
 $medhis=$_POST['medhis'];
-$sql=mysqli_query($con,"insert into tblpatient(Docid,PatientName,PatientContno,PatientEmail,PatientGender,PatientAdd,PatientAge,PatientMedhis) values('$docid','$patname','$patcontact','$patemail','$gender','$pataddress','$patage','$medhis')");
+$ci=$_POST['ci'];
+$lastname=$_POST['lastname'];
+$secondname=$_POST['secondname'];
+$sql=mysqli_query($con,"insert into tblpatient(Docid,PatientName,PatientContno,PatientEmail,PatientGender,PatientAdd,PatientAge,PatientMedhis,PatIdCard,PatLastName,PatSecondName) values('$docid','$patname','$patcontact','$patemail','$gender','$pataddress','$patage','$medhis','$ci','$lastname','$secondname')");
 if($sql)
 {
 echo "<script>alert('Paciente añadido correctamente');</script>";
@@ -24,6 +27,7 @@ header('location:manage-patient.php');
 }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -59,6 +63,26 @@ error:function (){}
 });
 }
 </script>
+<script type="text/javascript">
+        function valid() {
+            if (document.registration.password.value != document.registration.password_again.value) {
+                alert("Contraseña o confirmación de contraseña no coinciden!!");
+                document.registration.password_again.focus();
+                return false;
+            }
+
+            // Validar correo electrónico
+            var email = document.registration.email.value;
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Por favor, ingresa un correo electrónico válido");
+                document.registration.email.focus();
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 	</head>
 	<body>
 		<div id="app">		
@@ -94,64 +118,65 @@ error:function (){}
 <h5 class="panel-title">Añadir Paciente</h5>
 </div>
 <div class="panel-body">
-<form role="form" name="" method="post">
+<form  name="" method="post">
 
 <div class="form-group">
-<label for="doctorname">
-Nombre paciente
-</label>
-<input type="text" name="patname" class="form-control"  placeholder="Ingresa nombre paciente" required="true">
-</div>
-<div class="form-group">
-<label for="fess">
-Nro de contacto paciente
-</label>
-<input type="text" name="patcontact" class="form-control"  placeholder="Ingresa numero de contacto paciente" required="true" maxlength="10" pattern="[0-9]+">
-</div>
-<div class="form-group">
-<label for="fess">
-Email Paciente
-</label>
-<input type="email" id="patemail" name="patemail" class="form-control"  placeholder="Ingresa email paciente" required="true" onBlur="userAvailability()">
-<span id="user-availability-status1" style="font-size:12px;"></span>
-</div>
-<div class="form-group">
-<label class="block">
-Genero
-</label>
-<div class="clip-radio radio-primary">
-<input type="radio" id="rg-female" name="gender" value="femenino" >
-<label for="rg-female">
-Femenino
-</label>
-<input type="radio" id="rg-male" name="gender" value="masculino">
-<label for="rg-male">
-Masculino
-</label>
-</div>
-</div>
-<div class="form-group">
-<label for="address">
-Direccion de paciente
-</label>
-<textarea name="pataddress" class="form-control"  placeholder="Ingresa direccion de paciente" required="true"></textarea>
-</div>
-<div class="form-group">
-<label for="fess">
- Edad Paciente
-</label>
-<input type="text" name="patage" class="form-control"  placeholder="Ingresa edad de paciente" required="true">
-</div>
-<div class="form-group">
-<label for="fess">
- Historial Medico
-</label>
-<textarea type="text" name="medhis" class="form-control"  placeholder="Ingresas historial medico de paciente" required="true"></textarea>
-</div>	
+		<label for="doctorname">Nombre paciente</label>
+		<input type="text" name="patname" class="form-control" placeholder="Ingresa nombre paciente" required="true" pattern="[a-zA-Z\s]+" title="Solo se permiten letras y espacios">
+	</div>
 
-<button type="submit" name="submit" id="submit" class="btn btn-o btn-primary">
-Añadir
-</button>
+	<div class="form-group">
+		<label for="doctorname">Apellido paterno</label>
+		<input type="text" name="lastname" class="form-control" placeholder="Ingresa apellido paterno" required="true" pattern="[a-zA-Z\s]+" title="Solo se permiten letras y espacios">
+	</div>
+
+	<div class="form-group">
+		<label for="doctorname">Apellido materno</label>
+		<input type="text" name="secondname" class="form-control" placeholder="Ingresa apellido materno" required="true" pattern="[a-zA-Z\s]+" title="Solo se permiten letras y espacios">
+	</div>
+
+	<div class="form-group">
+		<label for="fess">Nro de carnet</label>
+		<input type="text" name="ci" class="form-control" placeholder="Ingresa número de carnet" required="true" minlength="8" maxlength="10" pattern="[0-9]+" title="Solo se permiten números">
+	</div>
+
+	<div class="form-group">
+		<label for="fess">Nro de contacto paciente</label>
+		<input type="text" name="patcontact" class="form-control" placeholder="Ingresa número de contacto paciente" required="true"minlength="8" maxlength="10" pattern="[0-9]+" title="Solo se permiten números">
+	</div>
+
+	<div class="form-group">
+		<label for="fess">Email Paciente</label>
+		<input type="email" id="patemail" name="patemail" class="form-control" placeholder="Ingresa email paciente" required="true">
+		<span id="user-availability-status1" style="font-size:12px;"></span>
+	</div>
+
+	<div class="form-group">
+		<label class="block">Género</label>
+		<div class="clip-radio radio-primary">
+			<input type="radio" id="rg-female" name="gender" value="femenino" required="true">
+			<label for="rg-female">Femenino</label>
+			<input type="radio" id="rg-male" name="gender" value="masculino" required="true">
+			<label for="rg-male">Masculino</label>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="address">Dirección de paciente</label>
+		<textarea name="pataddress" class="form-control" placeholder="Ingresa dirección de paciente" required="true" pattern="[a-zA-Z\s]+" title="Solo se permiten letras y espacios"></textarea>
+	</div>
+
+	<div class="form-group">
+		<label for="fess">Edad Paciente</label>
+		<input type="text" name="patage" class="form-control" placeholder="Ingresa edad de paciente" required="true" pattern="[0-9]+" maxlength="3"title="Solo se permiten números">
+	</div>
+
+	<div class="form-group">
+		<label for="fess">Historial Médico</label>
+		<textarea type="text" name="medhis" class="form-control" placeholder="Ingresa historial médico de paciente" required="true" pattern="[a-zA-Z\s]+" title="Solo se permiten letras"></textarea>
+	</div>
+
+	<button type="submit" name="submit" id="submit" class="btn btn-o btn-primary">Añadir</button>
 </form>
 </div>
 </div>

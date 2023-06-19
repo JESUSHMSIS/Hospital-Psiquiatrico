@@ -13,7 +13,10 @@ $docfees=$_POST['docfees'];
 $doccontactno=$_POST['doccontact'];
 $docemail=$_POST['docemail'];
 $password=md5($_POST['npass']);
-$sql=mysqli_query($con,"insert into doctors(specilization,doctorName,address,docFees,contactno,docEmail,password) values('$docspecialization','$docname','$docaddress','$docfees','$doccontactno','$docemail','$password')");
+$ci=$_POST['ci'];
+$lastname=$_POST['lastname'];
+$secondname=$_POST['secondname'];
+$sql=mysqli_query($con,"insert into doctors(specilization,doctorName,address,docFees,contactno,docEmail,password,ci,PatLastName ,PatSecondName ) values('$docspecialization','$docname','$docaddress','$docfees','$doccontactno','$docemail','$password','$ci','$lastname','$secondname')");
 if($sql)
 {
 echo "<script>alert('Información del especialista agregada con éxito');</script>";
@@ -134,7 +137,26 @@ while($row=mysqli_fetch_array($ret))
 															<label for="doctorname">
 																 Nombre de Especialista
 															</label>
-					<input type="text" name="docname" class="form-control"  placeholder="Ingresa el nombre" required="true">
+					<input type="text" name="docname" class="form-control"  placeholder="Ingresa el nombre" required="true" pattern="[A-Za-z\s]+" title="Solo se permiten letras">
+														</div>
+														
+														<div class="form-group">
+															<label for="doctorname">
+																 Apellido paterno
+															</label>
+					<input type="text" name="lastname" class="form-control"  placeholder="Ingresa el nombre" required="true" pattern="[A-Za-z\s]+" title="Solo se permiten letras">
+														</div>
+														<div class="form-group">
+															<label for="doctorname">
+																 Apellido materno
+															</label>
+					<input type="text" name="secondname" class="form-control"  placeholder="Ingresa el nombre" required="true" pattern="[A-Za-z\s]+" title="Solo se permiten letras">
+														</div>
+														<div class="form-group">
+									<label for="fess">
+																 Nro de carnet
+															</label>
+					<input type="text" name="ci" class="form-control"  placeholder="Ingresa de nro de carnet" pattern="[0-9]+" title="Solo se permiten números" minlength="8" maxlength="10" required="true">
 														</div>
 
 
@@ -142,20 +164,20 @@ while($row=mysqli_fetch_array($ret))
 															<label for="address">
 																 Direccion de Hopital
 															</label>
-					<textarea name="clinicaddress" class="form-control"  placeholder="Ingresa la Direccion" required="true"></textarea>
+					<textarea name="clinicaddress" class="form-control"  placeholder="Ingresa la Direccion" required="true"  pattern="[A-Za-z\s]+"></textarea>
 														</div>
 <div class="form-group">
 															<label for="fess">
 																 Costo de Consulta
 															</label>
-					<input type="text" name="docfees" class="form-control"  placeholder="Costo de consulta" required="true">
+					<input type="text" name="docfees" class="form-control"  placeholder="Costo de consulta" required="true" pattern="[0-9]+" title="Solo se permiten números" maxlength="3">
 														</div>
 	
 <div class="form-group">
 									<label for="fess">
 																 Nro de contacto
 															</label>
-					<input type="text" name="doccontact" class="form-control"  placeholder="Ingresa de nro de contacto" required="true">
+					<input type="text" name="doccontact" class="form-control"  placeholder="Ingresa de nro de contacto" required="true" pattern="[0-9]+" title="Solo se permiten números" minlength="8" maxlength="10">
 														</div>
 
 <div class="form-group">
@@ -173,7 +195,7 @@ while($row=mysqli_fetch_array($ret))
 															<label for="exampleInputPassword1">
 																 Contraseña
 															</label>
-					<input type="password" name="npass" class="form-control"  placeholder="Contraseña" required="required">
+					<input type="password" name="npass" class="form-control"  placeholder="Contraseña" pattern="^(?=.*\d)(?=.*[A-Z]).+$" title="La contraseña debe contener al menos un número y una letra mayúscula" required>
 														</div>
 														
 <div class="form-group">
@@ -182,6 +204,7 @@ while($row=mysqli_fetch_array($ret))
 															</label>
 									<input type="password" name="cfpass" class="form-control"  placeholder="Confirmar contraseña" required="required">
 														</div>
+														
 														
 														
 														

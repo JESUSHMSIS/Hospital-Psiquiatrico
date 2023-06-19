@@ -99,25 +99,25 @@ error:function (){}
 <label for="doctorname">
 Nombre de simulador
 </label>
-<input type="text" name="first_name" class="form-control"  placeholder="Ingresa nombre paciente" required="true">
+<input type="text" name="first_name" class="form-control"  placeholder="Ingresa nombre simulador" pattern="[A-Za-z\s]+" title="Solo se permiten letras" required>
 </div>
 <div class="form-group">
 <label for="fess">
 Apellido paterno
 </label>
-<input type="text" name="last_name" class="form-control"  placeholder="Ingresa Apellido paterno" required="true" maxlength="10">
+<input type="text" name="last_name" class="form-control"  placeholder="Ingresa Apellido paterno" required="true" maxlength="50" pattern="[A-Za-z\s]+" title="Solo se permiten letras" required>
 </div>
 <div class="form-group">
 <label for="fess">
 Apellido materno
 </label>
-<input type="text" id="middle_name" name="middle_name" class="form-control"  placeholder="Ingresa Apellido materno" required="true">
+<input type="text" id="middle_name" name="middle_name" class="form-control"  placeholder="Ingresa Apellido materno" required="true" pattern="[A-Za-z\s]+" title="Solo se permiten letras" required>
 <span id="user-availability-status1" style="font-size:12px;"></span>
 <div class="form-group">
 <label for="address">
 Carnet de identidad
 </label>
-<input name="id_number" class="form-control"  placeholder="Ingresa el carnet de identidad" required="true"></input>
+<input name="id_number" class="form-control"  placeholder="Ingresa el carnet de identidad" pattern="[0-9]+" title="Solo se permiten números" minlength="8" maxlength="10" required></input>
 </div>
 
 <label for="fess">
@@ -134,7 +134,7 @@ email</label>
 															<label for="exampleInputPassword1">
 																 Contraseña
 															</label>
-					<input type="password" name="password" class="form-control"  placeholder="Contraseña" required="required">
+					<input type="password" name="password" class="form-control"  placeholder="Contraseña" required="required" pattern="^(?=.*\d)(?=.*[A-Z]).+$" title="La contraseña debe contener al menos un número y una letra mayúscula">
 														</div>
 														
 <div class="form-group">

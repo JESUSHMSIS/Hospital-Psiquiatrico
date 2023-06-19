@@ -27,6 +27,30 @@
 											<i class="ti-user"></i>
 										</div>
 										<div class="item-inner">
+											<span class="title"> Usuarios por roles </span><i class="icon-arrow"></i>
+										</div>
+									</div>
+								</a>
+								<ul class="sub-menu">
+									
+								
+									
+									<li>
+										<a href="all-users.php">
+											<span class="title"> Lista de usuarios roles </span>
+										</a>
+									</li>
+									
+									
+								</ul>
+								</li>	
+							<li>
+								<a href="javascript:void(0)">
+									<div class="item-content">
+										<div class="item-media">
+											<i class="ti-user"></i>
+										</div>
+										<div class="item-inner">
 											<span class="title"> Especialistas </span><i class="icon-arrow"></i>
 										</div>
 									</div>

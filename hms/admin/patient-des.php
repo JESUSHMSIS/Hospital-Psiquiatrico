@@ -7,7 +7,7 @@ check_login();
 
 if(isset($_POST['reactivar'])) {
     $id = $_POST['id'];
-    mysqli_query($con, "UPDATE tblpatient SET estado = 1 WHERE id = $id");
+    mysqli_query($con, "UPDATE tblpatient SET estado = 1 WHERE ID = $id");
     $_SESSION['msg'] = "Usuario reactivado correctamente.";
     header("location:manage-patient.php");
 }
@@ -66,9 +66,9 @@ if(isset($_POST['reactivar'])) {
                                     <thead>
                                         <tr>
                                             <th class="center">#</th>
-                                            <th>Especialidad</th>
-                                            <th class="hidden-xs">Nombre de Especialista</th>
-                                            <th>Fecha de creacion </th>
+                                            <th>Nombre</th>
+                                            <th class="hidden-xs">Carnet de identidad</th>
+                                            <th>Fecha de creacion</th>
                                             <th>Acción</th>
                                             
                                         </tr>
@@ -83,19 +83,19 @@ if(isset($_POST['reactivar'])) {
                                         <tr>
                                             <td class="center"><?php echo $cnt;?>.</td>
                                             <td class="hidden-xs"><?php echo $row['PatientName'];?></td>
-                                            <td><?php echo $row['PatientContno'];?></td>
+                                            <td><?php echo $row['PatIdCard'];?></td>
                                             <td><?php echo $row['CreationDate'];?></td>
                                             
                                             <td>
                                            <?php
                                             echo "<td>
                                             <form method='post' action=''>
-                                                <input type='hidden' name='id' value='".$row['id']."' />
+                                                <input type='hidden' name='id' value='".$row['ID']."' />
                                                 <input type='submit' name='reactivar' value='Reactivar' />
                                             </form>
                                           </td>";
                                            ?>
-                                           <a href="manage-doctors.php?id=<?php echo $row['id']?>&del=delete" onClick="return confirm('Estas seguro de que lo quieres desactivar?')"class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove"><i class="fa fa-times fa fa-white"></i></a>
+                                         
                                                 <div class="visible-xs visible-sm hidden-md hidden-lg">
                                                     <div class="btn-group" dropdown is-open="status.isopen">
                                                         <button type="button" class="btn btn-primary btn-o btn-sm dropdown-toggle" dropdown-toggle>
