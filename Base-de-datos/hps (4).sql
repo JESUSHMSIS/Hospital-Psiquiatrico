@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-06-2023 a las 02:24:37
+-- Tiempo de generación: 19-06-2023 a las 16:24:34
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -76,8 +76,10 @@ INSERT INTO `appointment` (`id`, `doctorSpecialization`, `doctorId`, `userId`, `
 (12, 'Psiquiatra general', 1, 1, 0, '2023-06-27', '5:45 PM', '2023-06-16 21:38:53', 1, 1, NULL),
 (13, 'Psiquiatra general', 10, 1, 0, '2023-06-22', '7:45 PM', '2023-06-16 23:33:59', 1, 1, NULL),
 (14, 'Psiquiatra general', 10, 1, 0, '2023-06-16', '11:45 PM', '2023-06-18 03:42:05', 1, 1, NULL),
-(15, 'Psiquiatra general', 10, 4, 0, '2023-06-22', '2:00 PM', '2023-06-18 17:46:57', 1, 1, NULL),
-(16, 'Psiquiatra menor', 14, 1, 100, '2023-06-22', '7:30 PM', '2023-06-18 23:22:00', 1, 1, NULL);
+(15, 'Psiquiatra general', 10, 4, 0, '2023-06-22', '2:00 PM', '2023-06-18 17:46:57', 1, 0, '2023-06-19 05:16:54'),
+(16, 'Psiquiatra menor', 14, 1, 100, '2023-06-22', '7:30 PM', '2023-06-18 23:22:00', 1, 1, NULL),
+(17, 'Psiquiatra general', 10, 1, 0, '2023-06-21', '1:30 PM', '2023-06-19 05:21:16', 1, 0, '2023-06-19 12:28:40'),
+(18, 'Psiquiatra general', 12, 4, 100, '2023-06-23', '8:45 AM', '2023-06-19 12:38:12', 1, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -108,9 +110,9 @@ CREATE TABLE `doctors` (
 --
 
 INSERT INTO `doctors` (`id`, `specilization`, `doctorName`, `address`, `docFees`, `contactno`, `docEmail`, `password`, `creationDate`, `updationDate`, `estado`, `ci`, `PatLastName`, `PatSecondName`, `role`) VALUES
-(10, 'Psiquiatra general', 'Jesus', 'buenos aires', '0', 78815708, 'jesus@gmail.com', 'ab3b3e6556b4a9e7033cf87bf338862b', '2023-06-16 22:32:58', NULL, 1, NULL, NULL, NULL, 'ESPECIALISTA'),
-(11, 'Psiquiatra general', 'Marco', 'Buenos aires', '0', 78815708, 'marco@gmail.com', '9985039da9a041e4e95a6e62e63adf76', '2023-06-16 23:39:25', NULL, 1, NULL, NULL, NULL, 'ESPECIALISTA'),
-(12, 'Psiquiatra general', 'Dimas', 'desconocido', '100', 400043, 'dimas@gmail.com', '51947e3cf64ee746b6f2c73d174d525a', '2023-06-18 22:20:45', NULL, 1, '15325235', NULL, NULL, 'ESPECIALISTA'),
+(10, 'Psiquiatra general', 'Jesus', 'buenos aires', '0', 78815708, 'jesus@gmail.com', 'ab3b3e6556b4a9e7033cf87bf338862b', '2023-06-16 22:32:58', '2023-06-19 03:55:28', 1, '10083746', 'Huanaco', 'Mollisaca', 'ESPECIALISTA'),
+(11, 'Psiquiatra general', 'Marco', 'Buenos aires', '0', 78815708, 'marco@gmail.com', '9985039da9a041e4e95a6e62e63adf76', '2023-06-16 23:39:25', '2023-06-19 05:10:14', 1, NULL, NULL, NULL, 'ESPECIALISTA'),
+(12, 'Psiquiatra general', 'Dimas', 'desconocido', '100', 400043, 'dimas@gmail.com', '51947e3cf64ee746b6f2c73d174d525a', '2023-06-18 22:20:45', '2023-06-19 02:52:35', 1, '15325235', 'Miranda', 'Mollisaca', 'ESPECIALISTA'),
 (13, 'Psiquiatra general', 'Matias', 'desconocido', '29', 4343434, 'matias@gmail.com', '06098bbde90f356c3a7cddcdfcf92eee', '2023-06-18 22:26:21', NULL, 1, '3252352', 'gonzales', 'marquez', 'ESPECIALISTA'),
 (14, 'Psiquiatra menor', 'Juan', 'buenos aires', '100', 78812441, 'juan@gmail.com', 'f5737d25829e95b9c234b7fa06af8736', '2023-06-18 23:18:02', NULL, 1, '3883422', 'Padilla', 'Marquez', 'ESPECIALISTA'),
 (15, 'Psiquiatra general', 'Esteban', 'La ceja ', '100', 7815352, 'esteban@gmail.com', '3466752a246bee264d690225ea75954b', '2023-06-18 23:49:17', NULL, 1, '10003252', 'Ramos ', 'Chambilla', 'ESPECIALISTA'),
@@ -175,7 +177,7 @@ INSERT INTO `doctorslog` (`id`, `uid`, `username`, `userip`, `loginTime`, `logou
 (56, NULL, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 22:17:46', NULL, 0),
 (57, NULL, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 22:17:57', NULL, 0),
 (58, 1, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 22:18:24', '17-06-2023 03:54:07 AM', 1),
-(59, 1, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 22:25:03', '18-06-2023 11:13:04 PM', 1),
+(59, 1, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 22:25:03', '19-06-2023 09:35:28 AM', 1),
 (60, 10, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-16 23:43:07', NULL, 1),
 (61, 10, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-17 13:46:59', '18-06-2023 07:17:31 AM', 1),
 (62, 10, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-18 03:37:14', '18-06-2023 09:11:41 AM', 1),
@@ -193,7 +195,12 @@ INSERT INTO `doctorslog` (`id`, `uid`, `username`, `userip`, `loginTime`, `logou
 (74, 10, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-18 21:40:24', NULL, 1),
 (75, 14, 'juan@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-18 23:20:18', NULL, 1),
 (76, 10, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-18 23:50:07', '19-06-2023 05:21:33 AM', 1),
-(77, 10, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-18 23:52:30', NULL, 1);
+(77, 10, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-18 23:52:30', NULL, 1),
+(78, 10, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-19 03:38:04', NULL, 1),
+(79, 10, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-19 04:16:46', NULL, 1),
+(80, 10, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-19 04:39:39', NULL, 1),
+(81, 10, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-19 05:15:46', '19-06-2023 10:50:14 AM', 1),
+(82, 10, 'jesus@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-19 12:27:21', '19-06-2023 06:03:36 PM', 1);
 
 -- --------------------------------------------------------
 
@@ -268,8 +275,7 @@ CREATE TABLE `simulaciones` (
 --
 
 INSERT INTO `simulaciones` (`id`, `doctorId`, `nombre`, `enlace`) VALUES
-(11, NULL, 'simulacion fobia', 'https://www.youtube.com/watch?v=joXkoT6KV54'),
-(14, NULL, 'musica nueva', 'https://www.youtube.com/watch?v=B0sRLlfqklQ');
+(11, NULL, 'simulacion fobia', 'https://www.youtube.com/watch?v=joXkoT6KV54');
 
 -- --------------------------------------------------------
 
@@ -355,15 +361,17 @@ CREATE TABLE `tblpatient` (
 --
 
 INSERT INTO `tblpatient` (`ID`, `Docid`, `PatientName`, `PatientContno`, `PatientEmail`, `PatientGender`, `PatientAdd`, `PatientAge`, `PatientMedhis`, `CreationDate`, `UpdationDate`, `estado`, `PatIdCard`, `PatLastName`, `PatSecondName`, `role`) VALUES
-(1, 1, 'Alejandra', 4558968789, 'alejandra@gmail.com', 'Femenino', '\"\"J&K Block J-127, Buenos Aires', 0, 'Ella esta bien', '2019-11-04 20:38:06', '2023-06-18 22:14:38', 1, NULL, NULL, NULL, 'PACIENTE'),
-(6, 1, 'jose', 4435634, 'jose@gmail.com', 'masculino', 'Buenos Aires', 0, 'ninguno', '2023-06-14 21:03:18', NULL, 1, NULL, NULL, NULL, 'PACIENTE'),
-(7, 10, 'jose', 12345678, 'jes@gmail.com', 'masculino', 'Buenos Aires', 0, 'ninguno', '2023-06-16 23:45:03', '2023-06-18 02:46:54', 0, NULL, NULL, NULL, 'PACIENTE'),
-(8, 10, 'Marco', 7885325, 'marco1@gmail.com', 'masculino', 'Buenos Aries', 0, 'tuvo un accidente de moto hace 6 años', '2023-06-18 17:48:14', NULL, 1, NULL, NULL, NULL, 'PACIENTE'),
+(1, 1, 'Alejandra', 4558968789, 'alejandra@gmail.com', 'masculino', ' Buenos Aires', 25, 'ninguno', '2019-11-04 20:38:06', '2023-06-19 04:04:45', 0, '100837454', 'Huanaco', 'Mollisaca', 'PACIENTE'),
+(6, 1, 'jose', 44356344, 'jose@gmail.com', 'masculino', 'Buenos Aires', 20, 'ninguno', '2023-06-14 21:03:18', '2023-06-19 04:05:15', 0, '3243234223', 'quispe', 'perez', 'PACIENTE'),
+(7, 10, 'jose', 12345678, 'jes@gmail.com', 'masculino', 'Buenos Aires', 21, 'ninguno', '2023-06-16 23:45:03', '2023-06-19 04:40:39', 0, '10032523', 'Rodriguez', 'Perez', 'PACIENTE'),
+(8, 10, 'Marco', 7885325, 'marco1@gmail.com', 'masculino', 'Buenos Aries', 19, 'tuvo un accidente de moto hace 6 años', '2023-06-18 17:48:14', '2023-06-19 04:17:08', 1, '88852532', 'Maquera ', 'pacosillo', 'PACIENTE'),
 (11, 1, 'Antonio', 12345678, 'antonio@gmail.com', 'masculino', 'fads', 54, 'fasdfa', '2023-06-18 21:53:20', NULL, 1, '32232443', NULL, NULL, 'PACIENTE'),
 (12, 1, 'Michell', 43434343, 'michell@gmail.com', 'masculino', 'desconocido', 49, 'ninguno', '2023-06-18 22:00:05', NULL, 1, '434343', 'rodirgues', 'perez', 'PACIENTE'),
 (13, 1, 'jorge', 325352, 'jorge1@gmail.com', 'masculino', 'desconocido', 35, 'ninguno', '2023-06-18 22:01:54', NULL, 1, '325235', 'calderon', 'quisbert', 'PACIENTE'),
 (14, 1, 'Matias', 35235253, 'matias@gmail.com', 'masculino', 'desconocido', 30, 'ninguno', '2023-06-18 22:06:02', '2023-06-18 22:15:08', 1, '3252352', 'marquez ', 'Santino', 'PACIENTE'),
-(15, 1, 'Esteban', 76662335, 'esteban@gmail.com', 'masculino', 'buenos aires', 23, 'ninguno', '2023-06-18 23:47:20', NULL, 1, '100436344', 'Ramos ', 'Chambilla', 'PACIENTE');
+(15, 1, 'Esteban', 76662335, 'esteban@gmail.com', 'masculino', 'buenos aires', 23, 'ninguno', '2023-06-18 23:47:20', NULL, 1, '100436344', 'Ramos ', 'Chambilla', 'PACIENTE'),
+(16, 1, 'Jorge', 78814697, 'jorge@gmail.com', 'masculino', 'desconocido', 19, 'ninguno', '2023-06-19 01:39:29', NULL, 1, '32423422', 'Gato', 'Montes', 'PACIENTE'),
+(17, 10, 'alejandro', 78815708, 'alejandro@gmail.com', 'masculino', 'desconocido', 24, 'ninguno', '2023-06-19 03:47:22', '2023-06-19 03:49:55', 1, '523525588', 'quispe', 'pacosillo', 'PACIENTE');
 
 -- --------------------------------------------------------
 
@@ -392,7 +400,9 @@ INSERT INTO `tblpatientevaluation` (`ID`, `PatientID`, `Symptoms`, `Diagnosis`, 
 (4, 8, 'tiene un sintoma extraño', 'tiene una fobia desconocida', 'iremos trabajando todas en cada cita para ir mejorando tu condicion', 20, '2023-06-18 17:58:44'),
 (5, 8, 'tiene posible fobia psicologica ', 'tiene un problema psicologico', 'iremos trabajando para que te sientas mejor', 50, '2023-06-18 18:08:26'),
 (6, 8, 'tienes aun ciertos sintomas', 'posiblemente ya se te vaya la fobia ', 'ya falta poco para que te recuperes ', 95, '2023-06-18 20:43:08'),
-(7, 8, 'tiene esquizofrenia nivel severo ', 'tiene una fobia desconocida', 'iremos trabajando en tu caso poco a poco', 30, '2023-06-18 23:53:36');
+(7, 8, 'tiene esquizofrenia nivel severo ', 'tiene una fobia desconocida', 'iremos trabajando en tu caso poco a poco', 30, '2023-06-18 23:53:36'),
+(8, 8, 'tiene respiracion agitada', 'tiene ansiedad fobica social', 'tiene una observacion en el nivel de voz devido a que grita mucho', 15, '2023-06-19 05:19:19'),
+(9, 8, 'tiene nuevos sintomas de una posible fobia', 'tiene una fobia social', 'iremos trabajando durante cada cita', 15, '2023-06-19 12:33:10');
 
 -- --------------------------------------------------------
 
@@ -468,7 +478,12 @@ INSERT INTO `userlog` (`id`, `uid`, `username`, `userip`, `loginTime`, `logout`,
 (74, NULL, 'jose@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-18 23:20:44', NULL, 0),
 (75, 1, 'jes@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-18 23:21:51', NULL, 1),
 (76, NULL, 'marco@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-18 23:54:36', NULL, 0),
-(77, 4, 'marco1@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-18 23:54:45', NULL, 1);
+(77, 4, 'marco1@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-18 23:54:45', NULL, 1),
+(78, 1, 'jes@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-19 03:56:31', '19-06-2023 09:45:40 AM', 1),
+(79, 4, 'marco1@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-19 04:15:51', NULL, 1),
+(80, 1, 'jes@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-19 04:41:23', NULL, 1),
+(81, 1, 'jes@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-19 05:20:32', '19-06-2023 10:54:18 AM', 1),
+(82, 4, 'marco1@gmail.com', 0x3a3a3100000000000000000000000000, '2023-06-19 12:35:25', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -498,8 +513,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fullName`, `lastName`, `middleName`, `ci`, `address`, `city`, `gender`, `email`, `password`, `regDate`, `updationDate`, `estado`, `role`) VALUES
-(1, 'jose antonio', 'Huanaca', 'Perez', '32423443', 'buenos aires', 'La paz', 'masculino', 'jes@gmail.com', '90e528618534d005b1a7e7b7a367813f', '2023-06-16 21:31:18', '2023-06-18 17:44:31', 1, 'USUARIO'),
-(2, 'marco', 'maquera', 'pacosillo', '52352352', 'Buenos Aires', 'La paz', 'masculino', 'marco@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2023-06-16 23:13:54', NULL, 1, 'USUARIO'),
+(1, 'jose antonio', 'Quispe', 'Perez', '32423443', 'buenos aires', 'La paz', 'masculino', 'jes@gmail.com', '90e528618534d005b1a7e7b7a367813f', '2023-06-16 21:31:18', '2023-06-19 05:12:39', 1, 'USUARIO'),
+(2, 'marco', 'maquera', 'pacosillo', '52352352', 'Buenos Aires', 'La paz', 'masculino', 'marco@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2023-06-16 23:13:54', '2023-06-19 04:11:48', 1, 'USUARIO'),
 (3, 'Moises', 'Paco', 'Perez', '10083746', 'Buenos Aires', 'La paz', 'masculino', 'moises@gmail.com', 'a4f80546e0e2319d302d5e6fe30af835', '2023-06-16 23:14:51', '2023-06-18 03:24:22', 1, 'USUARIO'),
 (4, 'Marco', 'Maquera', 'Pacosillo', '10323222', 'Buenos Aires', 'La paz', 'masculino', 'marco1@gmail.com', 'f7fd5e0527271e590ad8416d5677180d', '2023-06-18 17:46:26', NULL, 1, 'USUARIO');
 
@@ -532,7 +547,7 @@ INSERT INTO `usuarios_simulador` (`id`, `first_name`, `last_name`, `middle_name`
 (1, 'jose antonio', 'Huanca', 'Calderon', '1032232', 'jose1@gmail.com', '1982-02-02', 'jose', '2023-06-15 18:11:28', '2023-06-18 22:12:32', 1, 'SIMULADOR'),
 (2, 'jorge', 'Doe', 'Smith', '1234567890', 'jorge@gmail.com', '1990-01-01', 'jorge123', '2023-06-15 18:39:14', '2023-06-16 19:23:44', 1, 'SIMULADOR'),
 (3, 'paco', 'pepe', '', '3252352', 'paco@gmail.com', '0000-00-00', '2023-06-08', '2023-06-16 12:56:32', '2023-06-16 19:19:15', 0, 'SIMULADOR'),
-(4, 'Marco', 'Maquera ', 'Pacosillo', '34253221', 'marco@gmail.com', '2004-01-14', 'marco123', '2023-06-16 19:24:55', NULL, 1, 'SIMULADOR');
+(4, 'Marco', 'Maquera ', 'Pacosillo', '34253221', 'marco@gmail.com', '2004-01-14', 'marco123', '2023-06-16 19:24:55', '2023-06-19 05:13:28', 0, 'SIMULADOR');
 
 --
 -- Índices para tablas volcadas
@@ -636,7 +651,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT de la tabla `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `doctors`
@@ -648,7 +663,7 @@ ALTER TABLE `doctors`
 -- AUTO_INCREMENT de la tabla `doctorslog`
 --
 ALTER TABLE `doctorslog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT de la tabla `doctorspecilization`
@@ -666,7 +681,7 @@ ALTER TABLE `intentos_usuarios`
 -- AUTO_INCREMENT de la tabla `simulaciones`
 --
 ALTER TABLE `simulaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `tblcontactus`
@@ -684,19 +699,19 @@ ALTER TABLE `tblmedicalhistory`
 -- AUTO_INCREMENT de la tabla `tblpatient`
 --
 ALTER TABLE `tblpatient`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `tblpatientevaluation`
 --
 ALTER TABLE `tblpatientevaluation`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `userlog`
 --
 ALTER TABLE `userlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
