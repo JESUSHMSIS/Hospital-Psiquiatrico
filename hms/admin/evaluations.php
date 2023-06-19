@@ -4,35 +4,30 @@ error_reporting(0);
 include('include/config.php');
 include('include/checklogin.php');
 check_login();
-if(isset($_POST['submit']))
-  {
+if (isset($_POST['submit'])) {
+    $vid = $_GET['viewid'];
+    $symptoms = $_POST['symptoms'];
+    $diagnosis = $_POST['diagnosis'];
+    $comments = $_POST['comments'];
+    $rating = $_POST['rating'];
+
+    $query = mysqli_query($con, "INSERT INTO tblpatientevaluation (PatientID, Symptoms, Diagnosis, SpecialistComments, ProgressRating) VALUES ('$vid', '$symptoms', '$diagnosis', '$comments', '$rating')");
     
-    $vid=$_GET['viewid'];
-    $bp=$_POST['bp'];
-    $bs=$_POST['bs'];
-    $weight=$_POST['weight'];
-    $temp=$_POST['temp'];
-   $pres=$_POST['pres'];
-   
- 
-      $query.=mysqli_query($con, "insert   tblmedicalhistory(PatientID,BloodPressure,BloodSugar,Weight,Temperature,MedicalPres)value('$vid','$bp','$bs','$weight','$temp','$pres')");
     if ($query) {
-    echo '<script>alert("Historial medico añadido correctamente.")</script>';
-    echo "<script>window.location.href ='manage-patient.php'</script>";
-  }
-  else
-    {
-      echo '<script>alert("Algo salió mal. Inténtalo de nuevo")</script>';
+        echo '<script>alert("Evaluación añadida correctamente")</script>';
+        echo "<script>window.location.href ='manage-patient.php'</script>";
+    } else {
+        echo '<script>alert("Algo salió mal. Inténtalo de nuevo")</script>';
     }
-
-  
 }
-
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Users | Medical History</title>
+		<title>Especialista | Lista de pacientes</title>
 		
 		<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
@@ -48,7 +43,15 @@ if(isset($_POST['submit']))
 		<link rel="stylesheet" href="assets/css/styles.css">
 		<link rel="stylesheet" href="assets/css/plugins.css">
 		<link rel="stylesheet" href="assets/css/themes/theme-1.css" id="skin_color" />
+
 	</head>
+    <style>
+  .progress-bar {
+    background-color: #007bff; /* Color de fondo de la barra de progreso */
+    height: 10px; /* Altura de la barra de progreso */
+  }
+</style>
+
 	<body>
 		<div id="app">		
 <?php include('include/sidebar.php');?>
@@ -60,14 +63,14 @@ if(isset($_POST['submit']))
 <section id="page-title">
 <div class="row">
 <div class="col-sm-8">
-<h1 class="mainTitle">Usuario | Historial Medico</h1>
+<h1 class="mainTitle">Especialista | Lista pacientes</h1>
 </div>
 <ol class="breadcrumb">
 <li>
-<span>Usuarios</span>
+<span>Especialista</span>
 </li>
 <li class="active">
-<span>Historial Medico</span>
+<span>Lista pacientes</span>
 </li>
 </ol>
 </div>
@@ -75,7 +78,7 @@ if(isset($_POST['submit']))
 <div class="container-fluid container-fullw bg-white">
 <div class="row">
 <div class="col-md-12">
-<h5 class="over-title margin-bottom-15">Usuarios <span class="text-bold">Historial Medico</span></h5>
+<h5 class="over-title margin-bottom-15">Lista de <span class="text-bold">Pacientes</span></h5>
 <?php
                                $vid=$_GET['viewid'];
                                $ret=mysqli_query($con,"select * from tblpatient where ID='$vid'");
@@ -85,12 +88,12 @@ while ($row=mysqli_fetch_array($ret)) {
 <table border="1" class="table table-bordered">
  <tr align="center">
 <td colspan="4" style="font-size:20px;color:blue">
- Detalles del paciente</td></tr>
+ Datos de paciente</td></tr>
 
     <tr>
-    <th scope>Nombre del paciente</th>
+    <th scope>Nombre de paciente</th>
     <td><?php  echo $row['PatientName'];?></td>
-    <th scope>Email de paciente</th>
+    <th scope>Email Paciente</th>
     <td><?php  echo $row['PatientEmail'];?></td>
   </tr>
   <tr>
@@ -100,7 +103,7 @@ while ($row=mysqli_fetch_array($ret)) {
     <td><?php  echo $row['PatSecondName'];?></td>
   </tr>
   <tr>
-    <th scope>Numero de celular</th>
+    <th scope>Numero de paciente</th>
     <td><?php  echo $row['PatientContno'];?></td>
     <th>Numero de carnet</th>
     <td><?php  echo $row['PatIdCard'];?></td>
@@ -115,51 +118,49 @@ while ($row=mysqli_fetch_array($ret)) {
     
     <th>Historial medico de paciente</th>
     <td><?php  echo $row['PatientMedhis'];?></td>
-     <th>Fecha de Reg Paciente</th>
+     <th>Paciente Reg Fecha</th>
     <td><?php  echo $row['CreationDate'];?></td>
   </tr>
  
 <?php }?>
 </table>
-<?php  
+<?php
+$ret = mysqli_query($con, "SELECT * FROM tblpatientevaluation WHERE PatientID='$vid'");
 
-$ret=mysqli_query($con,"select * from tblmedicalhistory  where PatientID='$vid'");
+?>
 
-
-
- ?>
 <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
   <tr align="center">
-   <th colspan="8" >Historial Medico</th> 
+    <th colspan="7">Evaluación</th>
   </tr>
   <tr>
     <th>#</th>
-<th>Presion de sangre</th>
-<th>Peso</th>
-<th>Nivel de azucar</th>
-<th>Temperatura</th>
-<th>Prescripcion Medica</th>
-<th>Fecha de visita</th>
-</tr>
-<?php  
-while ($row=mysqli_fetch_array($ret)) { 
+    <th>Síntomas</th>
+    <th>Diagnóstico</th>
+    <th>Comentarios del Especialista</th>
+    <th>Calificación de Progreso</th>
+    <th>Fecha de Visita</th>
+  </tr>
+  <?php
+  $cnt = 1;
+  while ($row = mysqli_fetch_array($ret)) {
   ?>
-<tr>
-  <td><?php echo $cnt;?></td>
- <td><?php  echo $row['BloodPressure'];?></td>
- <td><?php  echo $row['Weight'];?></td>
- <td><?php  echo $row['BloodSugar'];?></td> 
-  <td><?php  echo $row['Temperature'];?></td>
-  <td><?php  echo $row['MedicalPres'];?></td>
-  <td><?php  echo $row['CreationDate'];?></td> 
-</tr>
-<?php $cnt=$cnt+1;} ?>
+    <tr>
+      <td><?php echo $cnt; ?></td>
+      <td><?php echo $row['Symptoms']; ?></td>
+      <td><?php echo $row['Diagnosis']; ?></td>
+      <td><?php echo $row['SpecialistComments']; ?></td>
+      <td>
+  <div class="progress-bar" style="width: <?php echo $row['ProgressRating']; ?>%"></div>
+</td>
+
+      <td><?php echo $row['CreationDate']; ?></td>
+    </tr>
+    <?php $cnt = $cnt + 1;
+  } ?>
 </table>
-                          
-</div>
-</div>
-</div>
-</div>
+
+
 </div>
 </div>
 </div>

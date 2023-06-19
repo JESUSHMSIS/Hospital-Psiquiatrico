@@ -89,6 +89,7 @@ if(isset($_GET['del']))
                                                 <td>
                                                     <a href="view-patient.php?viewid=<?php echo $row['ID'];?>"><i class="fa fa-eye"></i></a>
                                                     <a href="manage-patient.php?ID=<?php echo $row['ID'];?>&del=delete" onClick="return confirm('¿Estás seguro de que quieres desactivarlo?')" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove"><i class="fa fa-times fa fa-white"></i></a>
+                                                    <a href="evaluations.php?viewid=<?php echo $row['ID'];?>"><i class="fa fa-edit"></i></a>
                                                 </td>
                                             </tr>
                                             <?php 
