@@ -75,6 +75,7 @@ if(isset($_GET['del']))
 												<th class="center">#</th>
 												<th>Especialidad</th>
 												<th class="hidden-xs">Nombre de Especialista</th>
+												<th>Carnet de identidad</th>
 												<th>Fecha de creacion </th>
 												<th>Accion</th>
 												
@@ -92,6 +93,7 @@ while($row=mysqli_fetch_array($sql))
 												<td class="center"><?php echo $cnt;?>.</td>
 												<td class="hidden-xs"><?php echo $row['specilization'];?></td>
 												<td><?php echo $row['doctorName'];?></td>
+												<th><?php echo $row['ci'];?></th>
 												<td><?php echo $row['creationDate'];?>
 												</td>
 												

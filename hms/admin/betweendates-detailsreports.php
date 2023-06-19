@@ -65,10 +65,10 @@ $tdate=$_POST['todate'];
 <tr>
 <th class="center">#</th>
 <th>Nombre de paciente</th>
-<th>Numero de contacto</th>
-<th>Genero de paciente </th>
+<th>Apellido paterno</th>
+<th>Apellido materno </th>
+<th>Carnet de identidad</th>
 <th>Fecha de Creacion </th>
-<th>Fecha de Actualizacion </th>
 <th>Accion</th>
 </tr>
 </thead>
@@ -83,10 +83,10 @@ while($row=mysqli_fetch_array($sql))
 <tr>
 <td class="center"><?php echo $cnt;?>.</td>
 <td class="hidden-xs"><?php echo $row['PatientName'];?></td>
-<td><?php echo $row['PatientContno'];?></td>
-<td><?php echo $row['PatientGender'];?></td>
+<td><?php echo $row['PatLastName'];?></td>
+<td><?php echo $row['PatSecondName'];?></td>
+<td><?php echo $row['PatIdCard'];?>
 <td><?php echo $row['CreationDate'];?></td>
-<td><?php echo $row['UpdationDate'];?>
 </td>
 <td>
 

@@ -71,9 +71,9 @@ if(isset($_GET['del']))
 											<tr>
 												<th class="center">#</th>
 												<th>Nombre completo</th>
-												<th class="hidden-xs">Direccion</th>
-												<th>Ciudad</th>
-												<th>Genero </th>
+												<th class="hidden-xs">Apellido paterno</th>
+												<th>Apellido materno</th>
+												<th>Carnet de identidad</th>
 												<th>Email </th>
 												<th>Fecha de creacion </th>
 												<th>Fecha de actualizacion </th>
@@ -92,10 +92,10 @@ while($row=mysqli_fetch_array($sql))
 											<tr>
 												<td class="center"><?php echo $cnt;?>.</td>
 												<td class="hidden-xs"><?php echo $row['fullName'];?></td>
-												<td><?php echo $row['address'];?></td>
-												<td><?php echo $row['city'];?>
+												<td><?php echo $row['lastName'];?></td>
+												<td><?php echo $row['middleName'];?>
 												</td>
-												<td><?php echo $row['gender'];?></td>
+												<td><?php echo $row['ci'];?></td>
 												<td><?php echo $row['email'];?></td>
 												<td><?php echo $row['regDate'];?></td>
 												<td><?php echo $row['updationDate'];?>

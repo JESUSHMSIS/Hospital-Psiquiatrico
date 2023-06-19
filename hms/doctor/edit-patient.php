@@ -5,23 +5,27 @@ include('include/config.php');
 include('include/checklogin.php');
 check_login();
 
-if(isset($_POST['submit']))
-{	
-	$eid=$_GET['editialertd'];
-	$patname=$_POST['patname'];
-$patcontact=$_POST['patcontact'];
-$patemail=$_POST['patemail'];
-$gender=$_POST['gender'];
-$pataddress=$_POST['pataddress'];
-$patage=$_POST['patage'];
-$medhis=$_POST['medhis'];
-$sql=mysqli_query($con,"update tblpatient set PatientName='$patname',PatientContno='$patcontact',PatientEmail='$patemail',PatientGender='$gender',PatientAdd='$pataddress',PatientAge='$patage',PatientMedhis='$medhis' where ID='$eid'");
-if($sql)
-{
-echo "<script>alert('Informacion del paciente actualizada correctamente');</script>";
-header('location:manage-patient.php');
-
-}
+if (isset($_POST['submit'])) {	
+	$eid = $_GET['editid'];
+	$patname = $_POST['patname'];
+	$patcontact = $_POST['patcontact'];
+	$patemail = $_POST['patemail'];
+	$gender = $_POST['gender'];
+	$pataddress = $_POST['pataddress'];
+	$patage = $_POST['patage'];
+	$medhis = $_POST['medhis'];
+	$lastname = $_POST['lastname'];
+	$secondname = $_POST['secondname'];
+	$ci = $_POST['ci'];
+	
+	$sql = mysqli_query($con, "UPDATE tblpatient SET PatientName='$patname', PatientContno='$patcontact', PatientEmail='$patemail', PatientGender='$gender', PatientAdd='$pataddress', PatientAge='$patage', PatientMedhis='$medhis', PatIdCard='$ci', PatLastName='$lastname', PatSecondName='$secondname' WHERE ID='$eid'");
+	
+	if (mysqli_affected_rows($con) > 0) {
+		echo "<script>alert('Información del paciente actualizada correctamente');</script>";
+		header('location: manage-patient.php');
+	} else {
+		echo "<script>alert('Error al actualizar la información del paciente');</script>";
+	}
 }
 ?>
 <!DOCTYPE html>
@@ -93,6 +97,25 @@ while ($row=mysqli_fetch_array($ret)) {
 Nombre de paciente
 </label>
 <input type="text" name="patname" class="form-control"  value="<?php  echo $row['PatientName'];?>" required="true">
+</div>
+
+<div class="form-group">
+<label for="doctorname">
+Apellido paterno
+</label>
+<input type="text" name="lastname" class="form-control"  value="<?php  echo $row['PatLastName'];?>" required="true">
+</div>
+<div class="form-group">
+<label for="doctorname">
+Apellido materno
+</label>
+<input type="text" name="secondname" class="form-control"  value="<?php  echo $row['PatSecondName'];?>" required="true">
+</div>
+<div class="form-group">
+<label for="doctorname">
+Carnet de identidad
+</label>
+<input type="text" name="ci" class="form-control"  value="<?php  echo $row['PatIdCard'];?>" required="true">
 </div>
 <div class="form-group">
 <label for="fess">

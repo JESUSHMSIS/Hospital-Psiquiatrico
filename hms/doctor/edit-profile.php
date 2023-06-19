@@ -11,7 +11,10 @@ $docaddress=$_POST['clinicaddress'];
 $docfees=$_POST['docfees'];
 $doccontactno=$_POST['doccontact'];
 $docemail=$_POST['docemail'];
-$sql=mysqli_query($con,"Update doctors set specilization='$docspecialization',doctorName='$docname',address='$docaddress',docFees='$docfees',contactno='$doccontactno' where id='".$_SESSION['id']."'");
+$ci=$_POST['ci'];
+$lastname=$_POST['lastname'];
+$secondname=$_POST['secondname'];
+$sql=mysqli_query($con,"Update doctors set specilization='$docspecialization',doctorName='$docname',address='$docaddress',docFees='$docfees',contactno='$doccontactno',ci='$ci',PatLastName='$lastname',PatSecondName='$secondname' where id='".$_SESSION['id']."'");
 if($sql)
 {
 echo "<script>alert('Datos de especialista actualizado correctamente!!');</script>";
@@ -113,7 +116,24 @@ while($row=mysqli_fetch_array($ret))
 															</label>
 	<input type="text" name="docname" class="form-control" value="<?php echo htmlentities($data['doctorName']);?>" >
 														</div>
-
+														<div class="form-group">
+															<label for="doctorname">
+																Apellido paterno
+															</label>
+	<input type="text" name="lastname" class="form-control" value="<?php echo htmlentities($data['PatLastName']);?>" >
+														</div>
+														<div class="form-group">
+															<label for="doctorname">
+																Apellido materno
+															</label>
+	<input type="text" name="secondname" class="form-control" value="<?php echo htmlentities($data['PatSecondName']);?>" >
+														</div>
+														<div class="form-group">
+									<label for="fess">
+																 Numero de carnet
+															</label>
+					<input type="text" name="ci" class="form-control" required="required"  value="<?php echo htmlentities($data['ci']);?>">
+														</div>
 
 <div class="form-group">
 															<label for="address">

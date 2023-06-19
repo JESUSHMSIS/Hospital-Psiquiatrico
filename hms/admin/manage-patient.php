@@ -65,10 +65,10 @@ if(isset($_GET['del']))
                                         <tr>
                                             <th class="center">#</th>
                                             <th>Nombre del paciente</th>
-                                            <th>Nro de contacto</th>
-                                            <th>Genero de paciente</th>
+                                            <th>Apellido paterno</th>
+                                            <th>Apellido materno</th>
+                                            <th>Carnet de identidad</th>
                                             <th>Fecha de creacion</th>
-                                            <th>Fecha de actualizacion</th>
                                             <th>Accion</th>
                                         </tr>
                                     </thead>
@@ -82,10 +82,10 @@ if(isset($_GET['del']))
                                             <tr>
                                                 <td class="center"><?php echo $cnt;?>.</td>
                                                 <td class="hidden-xs"><?php echo $row['PatientName'];?></td>
-                                                <td><?php echo $row['PatientContno'];?></td>
-                                                <td><?php echo $row['PatientGender'];?></td>
+                                                <td><?php echo $row['PatLastName'];?></td>
+                                                <td><?php echo $row['PatSecondName'];?></td>
+                                                <td><?php echo $row['PatIdCard'];?></td>
                                                 <td><?php echo $row['CreationDate'];?></td>
-                                                <td><?php echo $row['UpdationDate'];?></td>
                                                 <td>
                                                     <a href="view-patient.php?viewid=<?php echo $row['ID'];?>"><i class="fa fa-eye"></i></a>
                                                     <a href="manage-patient.php?ID=<?php echo $row['ID'];?>&del=delete" onClick="return confirm('¿Estás seguro de que quieres desactivarlo?')" class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove"><i class="fa fa-times fa fa-white"></i></a>

@@ -67,7 +67,7 @@ if(isset($_POST['reactivar'])) {
                                         <tr>
                                             <th class="center">#</th>
                                             <th>Nombre</th>
-                                            <th class="hidden-xs">Direccion</th>
+                                            <th class="hidden-xs">Carnet de identidad</th>
                                             <th>Email</th>
                                             <th>Acción</th>
                                             
@@ -83,7 +83,7 @@ if(isset($_POST['reactivar'])) {
                                         <tr>
                                             <td class="center"><?php echo $cnt;?>.</td>
                                             <td class="hidden-xs"><?php echo $row['fullName'];?></td>
-                                            <td><?php echo $row['address'];?></td>
+                                            <td><?php echo $row['ci'];?></td>
                                             <td><?php echo $row['email'];?></td>
                                             
                                             <td>
@@ -95,7 +95,7 @@ if(isset($_POST['reactivar'])) {
                                             </form>
                                           </td>";
                                            ?>
-                                           <a href="manage-doctors.php?id=<?php echo $row['id']?>&del=delete" onClick="return confirm('Estas seguro de que lo quieres desactivar?')"class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove"><i class="fa fa-times fa fa-white"></i></a>
+                                           
                                                 <div class="visible-xs visible-sm hidden-md hidden-lg">
                                                     <div class="btn-group" dropdown is-open="status.isopen">
                                                         <button type="button" class="btn btn-primary btn-o btn-sm dropdown-toggle" dropdown-toggle>

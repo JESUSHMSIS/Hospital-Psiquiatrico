@@ -94,10 +94,16 @@ while ($row=mysqli_fetch_array($ret)) {
     <td><?php  echo $row['PatientEmail'];?></td>
   </tr>
   <tr>
+    <th scope>Apellido paterno</th>
+    <td><?php  echo $row['PatLastName'];?></td>
+    <th scope>Apellido materno</th>
+    <td><?php  echo $row['PatSecondName'];?></td>
+  </tr>
+  <tr>
     <th scope>Nro de paciente</th>
     <td><?php  echo $row['PatientContno'];?></td>
-    <th>Direccion de paciente</th>
-    <td><?php  echo $row['PatientAdd'];?></td>
+    <th>Nro de carnet</th>
+    <td><?php  echo $row['PatIdCard'];?></td>
   </tr>
     <tr>
     <th>Genero de paciente</th>
